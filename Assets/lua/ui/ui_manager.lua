@@ -2,6 +2,7 @@ local UIManager = {}
 
 local TypeOfGameObject = typeof(CS.UnityEngine.GameObject)
 
+---- 加载资源
 function UIManager:loadAsset(assetPath, type, callback)
     CSMain:LoadAsset(assetPath, type, callback)
 end

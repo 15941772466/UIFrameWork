@@ -17,11 +17,9 @@ function Main:initCS()
 end
 
 function Main:update()
-
 end
 
 function Main:lateUpdate()
-
 end
 
 function Main:initLua()
@@ -29,6 +27,7 @@ function Main:initLua()
 
     DH.Logger = require "common/logger"
     DH.UIManager = require "ui/ui_manager"
+    DH.BaseUI = require "ui/base_ui"
 end
 
 ---- 禁用全局变量
