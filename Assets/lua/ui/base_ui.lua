@@ -1,0 +1,3 @@
+local BaseUI = {}
+
+return BaseUI
