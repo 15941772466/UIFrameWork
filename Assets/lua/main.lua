@@ -53,8 +53,37 @@ function Main:disableGlobal()
 end
 
 ---- lua模拟类
-class = function(className, supper)
+local classType={}
+class = function(className, super)
+    local superType =type(super)
+    local _class
 
+    if superType ~= "table" and superType ~="function" then
+        superType = nil
+        super = nil
+    end
+
+    if super then
+        _class ={}
+        setmetatable(_class,{__index=super})
+        _class.super=super
+    else
+        _class={
+            ctor=function() end   --类的构造函数
+        }
+    end
+    _class.className=className
+    _class.__index=_class
+
+    --new方法
+    function _class.new(...)
+        local instance =setmetatable({},_class)
+        instance.class=_class
+        instance:ctor(...)    --执行构造函数
+        return instance
+    end
+
+    return _class
 end
 
 Main:init()
