@@ -40,6 +40,9 @@ public static class LuaGenConfig
         typeof(List<int>),
         typeof(Action<string>),
         typeof(Debug),
+
+        typeof(DH.Main),
+        typeof(DH.Utils),
     };
     
 
@@ -52,7 +55,8 @@ public static class LuaGenConfig
         typeof(Action<string>),
         typeof(Action<double>),
         typeof(UnityEngine.Events.UnityAction),
-        typeof(IEnumerator)
+        typeof(IEnumerator),
+        typeof(Action<UnityEngine.Object>),
     };
 
     //黑名单
