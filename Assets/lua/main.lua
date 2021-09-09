@@ -28,6 +28,7 @@ function Main:initLua()
     DH.Logger = require "common/logger"
     DH.UIManager = require "ui/ui_manager"
     DH.BaseUI = require "ui/base_ui"
+    DH.BaseLayer = require "ui/base_layer"
 end
 
 ---- 禁用全局变量
@@ -87,3 +88,4 @@ class = function(className, super)
 end
 
 Main:init()
+UIManager:ctor()

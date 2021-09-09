@@ -2,29 +2,40 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../Scenes/Main.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Main.cs.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Utils.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Scenes/Utils.cs.meta" beforeDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/base_layer.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/base_layer.lua.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/ui.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/ui_root.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/ui_root.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="NewLua" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../.." />
   </component>
   <component name="ProjectId" id="1xqouOXBDb2v6r8Cri12QElZpC6" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
   <component name="PropertiesComponent">
+    <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
@@ -46,12 +57,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1631092200800</updated>
-      <workItem from="1631092203718" duration="2193000" />
+      <workItem from="1631092203718" duration="20664000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
     <state x="561" y="248" width="670" height="676" key="search.everywhere.popup" timestamp="1631093756263">
