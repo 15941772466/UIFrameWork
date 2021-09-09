@@ -27,8 +27,6 @@ end
 ---- 删除层级
 function BaseLayer:close()
     UIManager:getInstance():removeLayer()
-    --发出一个关闭的命令
-    self:Dispatcher(CLOSE_PANEL_EVENT)
     BaseLayer.super.close()
 end
 
