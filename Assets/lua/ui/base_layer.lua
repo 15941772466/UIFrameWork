@@ -25,9 +25,9 @@ function BaseLayer:hide()
 end
 
 ---- 删除层级
-function BaseLayer:close()
+function BaseLayer:delete()
     UIManager:getInstance():removeLayer()
-    BaseLayer.super.close()
+    BaseLayer.super.delete()
 end
 
 return BaseLayer
