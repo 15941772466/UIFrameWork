@@ -83,5 +83,54 @@ function UIManager:removeLayer(layer)
     end
 end
 
+---- 加载窗口
+function UIManager:getWindow(path,ui_name)
+    local window = self.windows[ui_name]
+    if window == nil then
+        window = self:loadGameObject(path,function(gameObject)
+            windows[ui_name] = gameObject
+            return gameObject
+        end)
+    end
+    assert(window, "加载窗口失败，不存在窗口: "..ui_name)
+    return window
+end
+
+---- 打开窗口
+function UIManager:openWindow(ui_name, ...)
+    local window = self:getWindow(ui_name)
+    assert(window, "打开窗口失败，不存在窗口:"..ui_name)
+    window.super:show()
+end
+
+---- 关闭窗口
+function UIManager:closeWindow(ui_name, ...)
+    local window = self.windows[ui_name]
+    assert(window, "关闭窗口失败，不存在窗口:"..ui_name)
+    window.super:hide()
+end
+
+---- 删除窗口
+function UIManager:deleteWindow(ui_name, ...)
+    local window = self.windows[ui_name]
+    assert(window, "删除窗口失败，不存在窗口:"..ui_name)
+    window.super:delete()
+    self.windows[ui_name] = nil
+end
+
+---- 隐藏所有窗口
+function UIManager:hideAllWindows()
+    for _,v in pairs(self.windows) do
+        v.super:hide()
+    end
+end
+
+---- 删除所有窗口
+function UIManager:deleteAllWindows()
+    for _,v in pairs(self.windows) do
+        v.super:delete()
+    end
+    self.windows = nil
+end
 
 return UIManager

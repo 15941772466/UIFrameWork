@@ -30,8 +30,8 @@ function BaseUI:hide( )
     self._uiTransform.gameObject:SetActive(false)
 end
 
-----关闭
-function BaseUI:close()
+----删除
+function BaseUI:delete()
     self:removeEvent()
     if self._uiTransform ~= nil then
         UnityEngine.GameObject.Destroy(self._uiTransform.gameObject)
