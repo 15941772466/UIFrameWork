@@ -29,6 +29,8 @@ function Main:initLua()
     DH.UIManager = require "ui/ui_manager"
     DH.BaseUI = require "ui/base_ui"
     DH.BaseLayer = require "ui/base_layer"
+
+    UIManager:init()
 end
 
 ---- 禁用全局变量
@@ -54,38 +56,37 @@ function Main:disableGlobal()
 end
 
 ---- lua模拟类
-local classType={}
 class = function(className, super)
-    local superType =type(super)
-    local _class
-
-    if superType ~= "table" and superType ~="function" then
-        superType = nil
-        super = nil
-    end
+    local cls = {__cname = className}
 
     if super then
-        _class ={}
-        setmetatable(_class,{__index=super})
-        _class.super=super
-    else
-        _class={
-            ctor=function() end   --类的构造函数
-        }
+        local superType = type(super)
+        local msg = string.format("class() - create class \"%s\" with invalid super class type \"%s\"", className, superType)
+        assert(superType == "table", msg)
+        cls.super = super
+        setmetatable(cls, {__index = super})
     end
-    _class.className=className
-    _class.__index=_class
 
-    --new方法
-    function _class.new(...)
-        local instance =setmetatable({},_class)
-        instance.class=_class
-        instance:ctor(...)    --执行构造函数
+    cls.ctor = function() end
+    cls.new = function(_, ...)
+        local instance = {}
+        setmetatable(instance, {__index = cls})
+        instance.class = cls
+        if instance.super then
+            local _constructor
+            _constructor = function(c, ...)
+                if c.super then
+                    _constructor(c.super, ...)
+                end
+                c.ctor(instance, ...)
+            end
+            _constructor(instance.super, ...)
+        end
+        instance:ctor(...)
         return instance
     end
-
-    return _class
+    cls.create = cls.new
+    return cls
 end
 
 Main:init()
-UIManager:ctor()
