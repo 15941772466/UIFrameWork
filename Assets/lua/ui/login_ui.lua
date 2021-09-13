@@ -1,20 +1,22 @@
 local LoginUI = class("BagUI", BaseUI)
 LoginUI.uiName = "loginUI"
+LoginUI.uiNode = "normal"
 LoginUI.resPath = "Assets/res/prefabs/login_ui.prefab"
-local login_btn
+local loginBtn
 
 function LoginUI:init()
-    login_btn = self.uiTransform:Find("login_btn"):GetComponent("UnityEngine.UI.Button")
+    loginBtn = self.uiTransform:Find("login_btn"):GetComponent("UnityEngine.UI.Button")
+    self:registerEvent()
 end
 
 function LoginUI:registerEvent()
-    EventSystem:addListener(UIConst.eventType.LOGIN_UI,self:loginEvent())
-    login_btn.onClick:AddListener(self.loginBtnOnClick)
+    EventSystem:addListener(UIConst.eventType.LOGIN_EVENT,self:loginEvent())
+    loginBtn.onClick:AddListener(self.loginBtnOnClick)
     --self:removeEvent()
 end
 
 function LoginUI:removeEvent()
-    EventSystem:removeListener(UIConst.eventType.LOGIN_UI,self:loginEvent())
+    EventSystem:removeListener(UIConst.eventType.LOGIN_EVENT,self:loginEvent())
 end
 
 function LoginUI:loginEvent()
@@ -30,11 +32,10 @@ end
 
 function LoginUI:onLoadComplete()
     self:init()
-    self:registerEvent()
 end
 
 function LoginUI.loginBtnOnClick()
-    EventSystem:sendEvent(UIConst.eventType.LOGIN_UI)
+    EventSystem:sendEvent(UIConst.eventType.LOGIN_EVENT)
 end
 
 return LoginUI

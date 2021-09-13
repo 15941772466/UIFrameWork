@@ -21,7 +21,9 @@ function UIManager:init()
     self:loadGameObject(UI_ROOT_PATH,function(gameObject)
         self.uiRoot = gameObject
         self.normal = self.uiRoot.transform:Find("normal")
-
+        self.popup = self.uiRoot.transform:Find("popup")
+        self.mask = self.uiRoot.transform:Find("popup/mask")
+        self.mask.gameObject:SetActive(false)
         self:openUI(UIConst.uiType.LOGIN_UI)
         --异步加载测试
         --self:openUI(UIConst.uiType.MAIN_UI)
@@ -61,6 +63,7 @@ function UIManager:closeUI(uiName)
     for _,v in pairs(self.uiList) do
         if v.uiName == uiName then
             v:hide()
+            self.mask.gameObject:SetActive(false)
             break
         end
     end

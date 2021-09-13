@@ -16,7 +16,15 @@ function BaseUI:startLoad(index)
     local path = self:getResPath()
     UIManager:loadGameObject(path, function(gameObject)
         self.gameObject = gameObject
-        self.gameObject.transform:SetParent(UIManager.normal.transform,false)
+        if self.uiNode == "normal" then
+            self.gameObject.transform:SetParent(UIManager.normal.transform,false)
+        elseif self.uiNode == "popup" then
+            self.gameObject.transform:SetParent(UIManager.popup.transform,false)
+            UIManager.mask.gameObject:SetActive(true)
+            UIManager.uiTransform[index] = UIManager.mask
+            self:setUIOrder(index)
+        end
+        index = index +1
         self.index = index
         UIManager.uiTransform[index] = gameObject.transform
         self.uiTransform = gameObject.transform
@@ -26,10 +34,16 @@ function BaseUI:startLoad(index)
 end
 
 function BaseUI:show(index)
-    self.uiTransform.gameObject:SetActive(true)
     UIManager.uiTransform[self.index] = nil
-    UIManager.uiTransform[index] = self.uiTransform
-    self:setUIOrder(index)
+    self.uiTransform.gameObject:SetActive(true)
+    if self.uiNode == "popup" then
+        Logger.log("popup")
+        UIManager.mask.gameObject:SetActive(true)
+        UIManager.uiTransform[index] = UIManager.mask
+        self:setUIOrder(index)
+    end
+    UIManager.uiTransform[index+1] = self.uiTransform
+    self:setUIOrder(index+1)
 end
 
 function BaseUI:setUIOrder(index)

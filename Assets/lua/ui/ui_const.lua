@@ -7,10 +7,10 @@ UIConst.uiType = {
 }
 
 UIConst.eventType = {
-     LOGIN_UI = "login_event",
-     BACK_UI = "back_event",
-     MAIN_UI = "main_event",
-     BAG_UI = "bag_event"
+     LOGIN_EVENT = "loginEvent",
+     MAIN_BACK_EVENT = "mainBackEvent",
+     BAG_EVENT = "bagEvent",
+     BAG_BACK_EVENT = "bagBackEvent"
 }
 
 
