@@ -13,10 +13,13 @@ end
 function MainUI:registerEvent()
     EventSystem:addListener(UIConst.eventType.BACK_UI,self:backEvent())
     back_btn.onClick:AddListener(self.backBtnOnClick)
+    EventSystem:addListener(UIConst.eventType.BAG_UI,self:bagEvent())
+    bag_btn.onClick:AddListener(self.bagBtnOnClick)
 end
 
 function MainUI:removeEvent()
-
+    EventSystem:removeListener(UIConst.eventType.BACK_UI,self:backEvent())
+    EventSystem:removeListener(UIConst.eventType.BAG_UI,self:bagEvent())
 end
 
 function MainUI:backEvent()
@@ -24,11 +27,19 @@ function MainUI:backEvent()
         UIManager:openUI(UIConst.uiType.LOGIN_UI)
     end
 end
+
 function MainUI.backBtnOnClick()
     EventSystem:sendEvent(UIConst.eventType.BACK_UI)
 end
-function MainUI:bagEvent()
 
+function MainUI:bagEvent()
+    return function()
+        UIManager:openUI(UIConst.uiType.BAG_UI)
+    end
+end
+
+function MainUI.bagBtnOnClick()
+    EventSystem:sendEvent(UIConst.eventType.BAG_UI)
 end
 
 function MainUI:getResPath()
@@ -38,6 +49,5 @@ end
 function MainUI:onLoadComplete()
     self:init()
 end
-
 
 return MainUI

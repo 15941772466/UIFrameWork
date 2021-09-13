@@ -1,5 +1,5 @@
 local BagUI = class("BagUI", BaseUI)
-
+BagUI.uiName = "bagUI"
 BagUI.resPath = "Assets/res/prefabs/bag_ui.prefab"
 
 function BagUI:init()

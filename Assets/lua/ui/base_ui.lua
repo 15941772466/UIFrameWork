@@ -12,8 +12,6 @@ function BaseUI:getResPath() end
 
 function BaseUI:onLoadComplete() end
 
-function BaseUI:doEvent() end
-
 function BaseUI:startLoad(index)
     local path = self:getResPath()
     UIManager:loadGameObject(path, function(gameObject)

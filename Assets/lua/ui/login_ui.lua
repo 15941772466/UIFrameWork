@@ -8,16 +8,16 @@ function LoginUI:init()
 end
 
 function LoginUI:registerEvent()
-    EventSystem:addListener(UIConst.eventType.LOGIN_UI,self:doEvent())
+    EventSystem:addListener(UIConst.eventType.LOGIN_UI,self:loginEvent())
     login_btn.onClick:AddListener(self.loginBtnOnClick)
     --self:removeEvent()
 end
 
 function LoginUI:removeEvent()
-    EventSystem:removeListener(UIConst.eventType.LOGIN_UI,self:doEvent())
+    EventSystem:removeListener(UIConst.eventType.LOGIN_UI,self:loginEvent())
 end
 
-function LoginUI:doEvent()
+function LoginUI:loginEvent()
     return function()
         UIManager:closeUI("loginUI")
         UIManager:openUI(UIConst.uiType.MAIN_UI)
