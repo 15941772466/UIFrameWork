@@ -28,7 +28,8 @@ function Main:initLua()
     DH.Logger = require "common/logger"
     DH.UIManager = require "ui/ui_manager"
     DH.BaseUI = require "ui/base_ui"
-    DH.BaseLayer = require "ui/base_layer"
+    DH.UIConst = require "ui/ui_const"
+    DH.EventSystem = require "ui/event_system"
 
     UIManager:init()
 end
@@ -57,7 +58,7 @@ end
 
 ---- lua模拟类
 class = function(className, super)
-    local cls = {__cname = className}
+    local cls = {cname = className}
 
     if super then
         local superType = type(super)

@@ -2,10 +2,26 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/common/tools.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/common/tools.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/event_system.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/event_system.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/login_ui.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/ui_const.lua.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_layer.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_layer.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/login.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/login.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/normal.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/normal.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/ui_root.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/ui_root.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -55,6 +71,11 @@
       <option name="presentableId" value="Default" />
       <updated>1631092200800</updated>
       <workItem from="1631092203718" duration="23381000" />
+      <workItem from="1631270696097" duration="8000" />
+      <workItem from="1631333090803" duration="388000" />
+      <workItem from="1631333483960" duration="16202000" />
+      <workItem from="1631351155355" duration="9557000" />
+      <workItem from="1631496468149" duration="16000" />
     </task>
     <servers />
   </component>
@@ -65,9 +86,26 @@
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="561" y="248" width="670" height="676" key="search.everywhere.popup" timestamp="1631093756263">
-      <screen x="0" y="25" width="1792" height="1013" />
+    <state x="361" y="189" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1631338089436">
+      <screen x="0" y="25" width="1792" height="1010" />
     </state>
-    <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.25.1792.1013@0.25.1792.1013" timestamp="1631093756263" />
+    <state x="361" y="189" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.25.1792.1010@0.25.1792.1010" timestamp="1631338089436" />
+    <state x="619" y="337" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1631258417084">
+      <screen x="0" y="25" width="1792" height="1015" />
+    </state>
+    <state x="619" y="337" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1792.1015@0.25.1792.1015" timestamp="1631258417084" />
+    <state x="484" y="277" key="IDE.errors.dialog" timestamp="1631267742783">
+      <screen x="0" y="25" width="1792" height="1015" />
+    </state>
+    <state x="484" y="277" key="IDE.errors.dialog/0.25.1792.1015@0.25.1792.1015" timestamp="1631267742783" />
+    <state width="600" height="424" key="javadoc.popup" timestamp="1631344063150">
+      <screen x="0" y="25" width="1792" height="1010" />
+    </state>
+    <state width="600" height="424" key="javadoc.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631344063150" />
+    <state x="561" y="247" width="670" height="674" key="search.everywhere.popup" timestamp="1631336983310">
+      <screen x="0" y="25" width="1792" height="1010" />
+    </state>
+    <state x="561" y="247" width="670" height="674" key="search.everywhere.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631336983310" />
+    <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.25.1792.1013@0.25.1792.1013" timestamp="1631243240980" />
   </component>
 </project>

@@ -4,12 +4,13 @@ local NORMAL_LAYER = "Assets/res/prefabs/normal.prefab"
 
 ---- 构造函数
 function BaseLayer:ctor(layerName)
-    local obj = UIManager:loadGameObject(NORMAL_LAYER, function(gameObject)
+    local obj
+    UIManager:loadGameObject(NORMAL_LAYER, function(gameObject)
         Logger.log("normal层级加载完成！")
-        return gameObject
+        obj=gameObject
     end)
 
-    obj.transform:SetParent(UIManager:getInstance().ui_root.transform)   ---- 出错了
+    obj.transform:SetParent(UIManager.uiRoot.transform)   ---- 出错了
     BaseLayer.super:ctor(layerName,uiTransform)
 end
 
