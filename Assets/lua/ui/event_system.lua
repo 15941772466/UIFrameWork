@@ -16,6 +16,7 @@ function EventSystem:addListener(eventType,func)
     else
         table.insert(EventSystem[eventType],func)
     end
+    Logger.log(eventType..'  addListener 执行完')
 end
 
 function EventSystem:removeListener(eventType,func)
@@ -29,7 +30,6 @@ function EventSystem:removeListener(eventType,func)
     end
     local a = EventSystem[eventType]
     if(a ~= nil)then
-        Logger.log(eventType)
         for k,v in pairs(a) do
             if(v == func)then
                 Logger.log(v)
@@ -39,7 +39,7 @@ function EventSystem:removeListener(eventType,func)
             end
         end
     end
-    Logger.log('EventSystem:removeListener 执行完')
+    Logger.log(eventType..'  EventSystem:removeListener 执行完')
 end
 
 function EventSystem:sendEvent(eventType,...)

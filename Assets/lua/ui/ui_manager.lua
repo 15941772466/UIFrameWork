@@ -1,6 +1,8 @@
 local UIManager = {}
 local TypeOfGameObject = typeof(CS.UnityEngine.GameObject)
 local UI_ROOT_PATH = "Assets/res/prefabs/ui_root.prefab"
+local UI_CACHE_MAX = 4
+local index = 0
 
 ---- 加载资源
 function UIManager:loadAsset(assetPath, type, callback)
@@ -18,24 +20,17 @@ end
 function UIManager:init()
     self.uiList = {}
     self.windows = {}
-    self:loadGameObject(UI_ROOT_PATH,function(gameObject)
+    self.uiTransform = {}
+    self.uiCacheList = {}
+    self:loadGameObject(UI_ROOT_PATH, function(gameObject)
         self.uiRoot = gameObject
         self.normal = self.uiRoot.transform:Find("normal")
         self.popup = self.uiRoot.transform:Find("popup")
         self.mask = self.uiRoot.transform:Find("popup/mask")
         self.mask.gameObject:SetActive(false)
         self:openUI(UIConst.uiType.LOGIN_UI)
-        --异步加载测试
-        --self:openUI(UIConst.uiType.MAIN_UI)
-        --self:openUI(UIConst.uiType.BAG_UI)
-        --self:openUI(UIConst.uiType.LOGIN_UI)
-        --self:openUI(UIConst.uiType.MAIN_UI)
-        --self:openUI(UIConst.uiType.BAG_UI)
     end)
 end
-
-local index = 0
-UIManager.uiTransform = {}
 
 function UIManager:openUI(uiType)
     index = index + 1
@@ -53,6 +48,11 @@ end
 
 function UIManager:checkOpen(uiType)
     if self.windows[uiType] ~= nil then
+        for i, v in pairs(self.uiCacheList) do
+            if v.uiName == self.windows[uiType].uiName then
+                table.remove(self.uiCacheList, i)
+            end
+        end
         return self.windows[uiType]
     else
         return nil
@@ -60,10 +60,17 @@ function UIManager:checkOpen(uiType)
 end
 
 function UIManager:closeUI(uiName)
-    for _,v in pairs(self.uiList) do
+    for i,v in pairs(self.uiList) do
         if v.uiName == uiName then
-            v:hide()
-            self.mask.gameObject:SetActive(false)
+            if #self.uiCacheList < UI_CACHE_MAX then
+                v:hide()
+                table.insert(self.uiCacheList, v)
+            else
+                v:delete()
+            end
+            if v.uiNode == "popup" then
+                self.mask.gameObject:SetActive(false)
+            end
             break
         end
     end
@@ -71,10 +78,10 @@ end
 
 function UIManager:deleteUI(uiType)
     local uiObj = self.windows[uiType]
-    for _,v in pairs(self.uiList) do
+    for i,v in pairs(self.uiList) do
         if v.uiName == uiObj.uiName then
             v:delete()
-            table.remove(self.uiList,uiObj)
+            table.remove(self.uiList ,i)
             break
         end
     end
@@ -88,7 +95,7 @@ function UIManager:closeAllUI()
 end
 
 function UIManager:deleteAllUI()
-    for _,v in pairs(self.uiList) do
+    for _ ,v in pairs(self.uiList) do
         v:delete()
     end
     self.uiList = {}
