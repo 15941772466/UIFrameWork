@@ -2,26 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/common/tools.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/common/tools.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/event_system.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/event_system.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/login_ui.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/ui_const.lua.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Scenes/game.unity" beforeDir="false" afterPath="$PROJECT_DIR$/../Scenes/game.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/base_layer.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_layer.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/event_system.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/login.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/login.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/normal.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/normal.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/ui_root.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/ui_root.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/main_ui.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/main_ui.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +64,7 @@
       <workItem from="1631333090803" duration="388000" />
       <workItem from="1631333483960" duration="16202000" />
       <workItem from="1631351155355" duration="9557000" />
-      <workItem from="1631496468149" duration="16000" />
+      <workItem from="1631496468149" duration="4265000" />
     </task>
     <servers />
   </component>

@@ -31,6 +31,7 @@ function EventSystem:removeListener(eventType,func)
             end
         end
     end
+    Logger.log('EventSystem:removeListener 执行完')
 end
 
 function EventSystem:sendEvent(eventType,...)

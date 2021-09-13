@@ -19,6 +19,7 @@ function BaseUI:startLoad(index)
     UIManager:loadGameObject(path, function(gameObject)
         self.gameObject = gameObject
         self.gameObject.transform:SetParent(UIManager.normal.transform,false)
+        self.index = index
         UIManager.uiTransform[index] = gameObject.transform
         self.uiTransform = gameObject.transform
         self:setUIOrder(index)
@@ -28,10 +29,13 @@ end
 
 function BaseUI:show(index)
     self.uiTransform.gameObject:SetActive(true)
+    UIManager.uiTransform[self.index] = nil
+    UIManager.uiTransform[index] = self.uiTransform
     self:setUIOrder(index)
 end
 
 function BaseUI:setUIOrder(index)
+    Logger.log(index)
     for i, v in pairs(UIManager.uiTransform) do
         if i < index then
         else

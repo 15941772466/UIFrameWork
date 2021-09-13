@@ -37,7 +37,8 @@ UIManager.uiTransform = {}
 
 function UIManager:openUI(uiType)
     index = index + 1
-    local uiObj = self:checkOpen(uiType)
+    local uiObj
+    uiObj = self:checkOpen(uiType)
     if uiObj then
         uiObj:show(index)
         return
