@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="bc5525e5-1b8e-4776-8327-25530bbbf000" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../common.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/bag/bag_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/event_system.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/login_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/main_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/../ui/ui_manager.lua" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1y6v08ROnkSMb3fdhN4PAq3NBPB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="project.structure.last.edited" value="Modules" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="bc5525e5-1b8e-4776-8327-25530bbbf000" name="Default Changelist" comment="" />
+      <created>1631584626795</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631584626795</updated>
+      <workItem from="1631584627973" duration="36000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2352" y="172" key="#Project_Structure" timestamp="1631584636546">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2352" y="172" key="#Project_Structure/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631584636546" />
+  </component>
+</project>

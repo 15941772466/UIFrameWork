@@ -36,23 +36,30 @@ function BaseUI:startLoad(index)
 end
 
 function BaseUI:show(index)
-    UIManager.uiTransform[self.index] = nil
-    self.uiTransform.gameObject:SetActive(true)
     if self.uiNode == "popup" then
-        Logger.log("popup")
         UIManager.mask.gameObject:SetActive(true)
         UIManager.uiTransform[index] = UIManager.mask
         self:setUIOrder(index)
     end
-    UIManager.uiTransform[index+1] = self.uiTransform
-    self:setUIOrder(index+1)
-    self:onRefresh()
+
+    UIManager.uiTransform[self.index] = nil
+    index = index +1
+    self.index = index
+    UIManager.uiTransform[index] = self.uiTransform
+    self:setUIOrder(index)
+
+    if self.gameObject.activeSelf then
+        return
+    else
+        self.uiTransform.gameObject:SetActive(true)
+        self.opened = true
+        self:onRefresh()
+    end
 end
 
 function BaseUI:setUIOrder(index)
     for i, v in pairs(UIManager.uiTransform) do
-        if i < index then
-        else
+        if i > index then
             v:SetSiblingIndex(i)
         end
     end
@@ -60,7 +67,6 @@ end
 
 function BaseUI:closeUI(uiName)
     UIManager:closeUI(uiName)
-    Logger.logWarning("BaseUI:closeUI")
     self:onClose()
 end
 

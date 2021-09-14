@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="5d5d8ed3-644f-474d-9921-26c1d85841c1" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/../.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../common.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../main.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../ui.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/bag/bag_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/event_system.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/login_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui_manager.lua" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/../../.." />
+  </component>
+  <component name="ProjectId" id="1y6uu5izU1HYFGJlwhctdnoJy6P" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5d5d8ed3-644f-474d-9921-26c1d85841c1" name="Default Changelist" comment="" />
+      <created>1631584578553</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1631584578553</updated>
+      <workItem from="1631584579763" duration="47000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+</project>

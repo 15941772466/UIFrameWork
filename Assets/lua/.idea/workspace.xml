@@ -2,13 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/lua.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/lua.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/event_system.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -19,6 +19,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="NewLua" />
+        <option value="CreateLua" />
       </list>
     </option>
   </component>
@@ -37,6 +38,7 @@
   <component name="PropertiesComponent">
     <property name="ASKED_ADD_EXTERNAL_FILES" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
@@ -46,6 +48,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="settings.editor.selected.configurable" value="fileTemplates" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -62,7 +65,11 @@
       <workItem from="1631333090803" duration="388000" />
       <workItem from="1631333483960" duration="16202000" />
       <workItem from="1631351155355" duration="9557000" />
-      <workItem from="1631496468149" duration="19457000" />
+      <workItem from="1631496468149" duration="23104000" />
+      <workItem from="1631583019390" duration="1224000" />
+      <workItem from="1631584283224" duration="27000" />
+      <workItem from="1631584323837" duration="254000" />
+      <workItem from="1631584664397" duration="2885000" />
     </task>
     <servers />
   </component>
@@ -85,13 +92,27 @@
       <screen x="0" y="25" width="1792" height="1015" />
     </state>
     <state x="484" y="277" key="IDE.errors.dialog/0.25.1792.1015@0.25.1792.1015" timestamp="1631267742783" />
-    <state width="600" height="424" key="javadoc.popup" timestamp="1631344063150">
-      <screen x="0" y="25" width="1792" height="1010" />
+    <state x="2261" y="146" key="SettingsEditor" timestamp="1631585302484">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2261" y="146" key="SettingsEditor/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631585302484" />
+    <state width="500" height="445" key="SwitcherDM" timestamp="1631583615200">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state width="500" height="445" key="SwitcherDM/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631583615200" />
+    <state x="2566" y="258" width="816" height="729" key="find.popup" timestamp="1631587360864">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2566" y="258" width="816" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631587360864" />
+    <state width="643" height="408" key="javadoc.popup" timestamp="1631528776256">
+      <screen x="1792" y="25" width="1920" height="970" />
     </state>
     <state width="600" height="424" key="javadoc.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631344063150" />
-    <state x="561" y="247" width="670" height="674" key="search.everywhere.popup" timestamp="1631336983310">
-      <screen x="0" y="25" width="1792" height="1010" />
+    <state width="643" height="408" key="javadoc.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631528776256" />
+    <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup" timestamp="1631585558822">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
+    <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631585558822" />
     <state x="561" y="247" width="670" height="674" key="search.everywhere.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631336983310" />
     <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.25.1792.1013@0.25.1792.1013" timestamp="1631243240980" />
   </component>
