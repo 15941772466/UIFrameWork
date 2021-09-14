@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/event_system.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,13 +100,15 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631583615200" />
-    <state x="2566" y="258" width="816" height="729" key="find.popup" timestamp="1631587360864">
-      <screen x="1792" y="25" width="1920" height="1055" />
-    </state>
-    <state x="2566" y="258" width="816" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631587360864" />
-    <state width="643" height="408" key="javadoc.popup" timestamp="1631528776256">
+    <state x="2566" y="239" width="816" height="671" key="find.popup" timestamp="1631605041671">
       <screen x="1792" y="25" width="1920" height="970" />
     </state>
+    <state x="2566" y="258" width="816" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631587360864" />
+    <state x="2566" y="239" width="816" height="671" key="find.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631605041671" />
+    <state width="643" height="444" key="javadoc.popup" timestamp="1631601085852">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state width="643" height="444" key="javadoc.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631601085852" />
     <state width="600" height="424" key="javadoc.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631344063150" />
     <state width="643" height="408" key="javadoc.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631528776256" />
     <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup" timestamp="1631585558822">

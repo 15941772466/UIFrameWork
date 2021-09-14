@@ -1,10 +1,6 @@
 local BaseUI = {}
 function BaseUI:ctor() end
 
-function BaseUI:registerEvent() end
-
-function BaseUI:removeEvent() end
-
 function BaseUI:getResPath() end
 
 function BaseUI:onLoadComplete() end
@@ -12,6 +8,26 @@ function BaseUI:onLoadComplete() end
 function BaseUI:onRefresh() end
 
 function BaseUI:onClose() end
+
+function BaseUI:onInitEvent() end
+
+function BaseUI:registerEvent(eventType,func)
+    if(self.eventList[eventType] == nil)then
+        local a={}
+        table.insert(a,func)
+        self.eventList[eventType] = a
+    else
+        table.insert(self.eventList[eventType],func)
+    end
+    EventSystem:addListener(eventType, func)
+end
+
+function BaseUI:removeEvent(eventType)
+    for i,v in pairs(self.eventList[eventType]) do
+        EventSystem:removeListener(eventType, v)
+        table.remove(self.eventList[eventType],i)
+    end
+end
 
 function BaseUI:startLoad(index)
     local path = self:getResPath()
@@ -31,6 +47,7 @@ function BaseUI:startLoad(index)
         self.uiTransform = gameObject.transform
         self:setUIOrder(index)
         self:onLoadComplete()
+        self:onInitEvent()
         self:onRefresh()
     end)
 end
@@ -50,7 +67,7 @@ function BaseUI:show(index)
 
     if not self.gameObject.activeSelf then
         self.uiTransform.gameObject:SetActive(true)
-        self.opened = true
+        self:onInitEvent()
         self:onRefresh()
     end
 end

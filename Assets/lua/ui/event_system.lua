@@ -36,6 +36,7 @@ function EventSystem:removeListener(eventType,func)
             end
         end
     end
+    --Logger.log('EventSystem:removeListener')
 end
 
 function EventSystem:sendEvent(eventType,...)

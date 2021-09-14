@@ -34,6 +34,14 @@ function Main:initLua()
     UIManager:init()
 end
 
+function Main:initForIdea()
+    Logger = Logger or require "common/logger"
+    UIManager =  UIManager or require "ui/ui_manager"
+    BaseUI = BaseUI or require "ui/base_ui"
+    UIConst = UIConst or require "ui/ui_const"
+    EventSystem = EventSystem or require "ui/event_system"
+end
+
 ---- 禁用全局变量
 function Main:disableGlobal()
     local __g = _G
