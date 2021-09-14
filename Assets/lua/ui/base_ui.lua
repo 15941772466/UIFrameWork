@@ -48,9 +48,7 @@ function BaseUI:show(index)
     UIManager.uiTransform[index] = self.uiTransform
     self:setUIOrder(index)
 
-    if self.gameObject.activeSelf then
-        return
-    else
+    if not self.gameObject.activeSelf then
         self.uiTransform.gameObject:SetActive(true)
         self.opened = true
         self:onRefresh()
@@ -59,7 +57,7 @@ end
 
 function BaseUI:setUIOrder(index)
     for i, v in pairs(UIManager.uiTransform) do
-        if i > index then
+        if i >= index then
             v:SetSiblingIndex(i)
         end
     end

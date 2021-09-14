@@ -2,11 +2,11 @@ local EventSystem = {}
 
 function EventSystem:addListener(eventType,func)
     if(eventType == nil)then
-        Logger.log('在EventSystem:addListener中eventType为空')
+        Logger.log('在EventSystem:addListener中 eventType为空')
         return
     end
     if(func == nil)then
-        Logger.log('在EventSystem:addListener中func为空')
+        Logger.log('在EventSystem:addListener中 func为空')
         return
     end
     if(EventSystem[eventType] == nil)then
@@ -20,11 +20,11 @@ end
 
 function EventSystem:removeListener(eventType,func)
     if(eventType == nil)then
-        Logger.log('在EventSystem:removeListener中eventType为空')
+        Logger.log('在EventSystem:removeListener中 eventType为空')
         return
     end
     if(func == nil)then
-        Logger.log('在EventSystem:removeListener中func为空')
+        Logger.log('在EventSystem:removeListener中 func为空')
         return
     end
     local a = EventSystem[eventType]
