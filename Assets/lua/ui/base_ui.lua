@@ -98,7 +98,7 @@ function BaseUI:reShow(index)
 end
 
 function BaseUI:setUIOrder(index)
-    for i, v in pairs(UIManager.uiTransformMap) do
+    for i, v in pairs (UIManager.uiTransformMap) do
         if i >= index then
             v:SetSiblingIndex(i)
         end
@@ -123,7 +123,7 @@ function BaseUI:delete()
     local loading = true
     while loading do
         if self.uiTransform then
-            for i, v in pairs(UIManager.uiTransformMap) do
+            for i, v in pairs (UIManager.uiTransformMap) do
                 if self.uiTransform == v then
                     UIManager.uiTransformMap[i] = nil
                 end

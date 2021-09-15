@@ -138,18 +138,4 @@ function UIManager:deleteUIByType(uiType)
     self.uiObjMap[uiType] = nil
 end
 
-function UIManager:closeAllUI()
-    for _, v in ipairs (self.uiList) do
-        v:hide()
-    end
-end
-
-function UIManager:deleteAllUI()
-    for _, v in ipairs (self.uiList) do
-        v:delete()
-    end
-    self.uiList = {}
-    self.uiObjMap = {}
-end
-
 return UIManager
