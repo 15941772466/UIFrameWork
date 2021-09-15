@@ -15,7 +15,7 @@ UIConst.EVENT_TYPE = {
 
 UIConst.UI_NODE = {
      NORMAL = "normal",
-     MASK ="normal/mask",
+     MASK = "normal/mask",
      POPUP = "popup"
 }
 return UIConst

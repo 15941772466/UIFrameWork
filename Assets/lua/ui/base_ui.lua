@@ -1,7 +1,5 @@
 local BaseUI = {}
 
--- BaseUI.uiTransformMap = {}
-
 function BaseUI:ctor() end
 
 function BaseUI:getResPath() end
@@ -36,10 +34,10 @@ function BaseUI:removeEvent(eventType)
 end
 
 function BaseUI:removeAllEvents()
-    for _, v in ipairs(self.eventTypeList) do
-        for i, j in ipairs(self.eventList[v]) do
-            EventSystem:removeListener(v, j)
-            table.remove(self.eventList[v], i)
+    for _, eventType in ipairs(self.eventTypeList) do
+        for i, v in ipairs(self.eventList[eventType]) do
+            EventSystem:removeListener(eventType, v)
+            table.remove(self.eventList[eventType], i)
         end
     end
 end
@@ -112,11 +110,28 @@ function BaseUI:closeUI()
 end
 
 function BaseUI:hide()
-    self.uiTransform.gameObject:SetActive(false)
+    local loading = true
+    while loading do
+        if self.uiTransform then
+            self.uiTransform.gameObject:SetActive(false)
+            loading = false
+        end
+    end
 end
 
 function BaseUI:delete()
-    CS.UnityEngine.GameObject.Destroy(self.uiTransform.gameObject)
+    local loading = true
+    while loading do
+        if self.uiTransform then
+            for i, v in pairs(UIManager.uiTransformMap) do
+                if self.uiTransform == v then
+                    UIManager.uiTransformMap[i] = nil
+                end
+            end
+            CS.UnityEngine.GameObject.Destroy(self.uiTransform.gameObject)
+            loading = false
+        end
+    end
 end
 
 return BaseUI

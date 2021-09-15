@@ -2,7 +2,7 @@ local UIManager = {}
 local TypeOfGameObject = typeof(CS.UnityEngine.GameObject)
 local UI_ROOT_PATH = "Assets/res/prefabs/ui_root.prefab"
 local UI_CACHE_MAX = 4
-
+local index
 ---- 加载资源
 function UIManager:loadAsset(assetPath, type, callback)
     CSMain:LoadAsset(assetPath, type, callback)
@@ -26,40 +26,36 @@ function UIManager:init()
         self.normal = self.uiRoot.transform:Find(UIConst.UI_NODE.NORMAL)
         self.mask = self.uiRoot.transform:Find(UIConst.UI_NODE.MASK)
         self.mask.gameObject:SetActive(false)
-        self:openUI(UIConst.UI_TYPE.MAIN_UI)
-        self:openUI(UIConst.UI_TYPE.BAG_UI)
         self:openUI(UIConst.UI_TYPE.LOGIN_UI)
     end)
 end
 
 function UIManager:openUI(uiType)
-    local uiObj
-    local topUISiblingIndex
     local topUI = self.uiList[#self.uiList]
     if topUI then
-        topUISiblingIndex = #self.uiList + 1
+        index = index + 1
         topUI:onCover()
     else
-        topUISiblingIndex = 1
+        index = 1
     end
 
-    uiObj = self:getFromCacheList(uiType)
+    local uiObj = self:getFromCacheList(uiType)
     if uiObj then
         if self:checkOpen(uiType) then
-            uiObj:show(topUISiblingIndex)
+            uiObj:show(index)
             table.insert(self.uiList, uiObj)
             return
         end
         table.insert(self.uiList, uiObj)
-        uiObj:reShow(topUISiblingIndex)
+        uiObj:reShow(index)
         return
     end
 
     uiObj = require(uiType):create()
     table.insert(self.uiList, uiObj)
     self.uiObjMap[uiType] = uiObj
-    --Logger.log(uiType)
-    uiObj:startLoad(topUISiblingIndex)
+
+    uiObj:startLoad(index)
 end
 
 function UIManager:checkOpen(uiType)
@@ -80,12 +76,18 @@ function UIManager:getFromCacheList(uiType)
 end
 
 function UIManager:closeUI(uiObj)
-    for _, v in ipairs (self.uiList) do
+    for i, v in ipairs (self.uiList) do
         if v == uiObj then
             if #self.uiCacheList < UI_CACHE_MAX then
                 v:hide()
                 table.insert(self.uiCacheList, v)
             else
+                table.remove(self.uiList, i)
+                for key, value in pairs (self.uiObjMap) do
+                    if value == uiObj then
+                        self.uiObjMap[key] = nil
+                    end
+                end
                 v:delete()
             end
             v:removeAllEvents()
@@ -106,8 +108,12 @@ function UIManager:closeUIByType(uiType)
     else
         for i, v in ipairs (self.uiList) do
             if v == uiObj then
-                v:delete()
                 table.remove(self.uiList, i)
+                for key, value in pairs (self.uiObjMap) do
+                    if value == uiObj then
+                        self.uiObjMap[key] = nil
+                    end
+                end
                 uiObj:delete()
                 break
             end

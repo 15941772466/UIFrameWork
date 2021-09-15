@@ -3,12 +3,9 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/base_layer.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_layer.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/base_layer.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/base_layer.lua.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/event_system.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
     </list>
@@ -102,11 +99,12 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state width="500" height="445" key="SwitcherDM/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631583615200" />
-    <state x="2566" y="258" width="816" height="730" key="find.popup" timestamp="1631689818985">
+    <state x="2566" y="258" width="816" height="730" key="find.popup" timestamp="1631699841587">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
-    <state x="2566" y="258" width="816" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631587360864" />
-    <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631689818985" />
+    <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631696734129" />
+    <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631698911015" />
+    <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631699841587" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1015/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631688586081" />
     <state x="2182" y="257" width="1200" height="730" key="find.popup/0.25.1792.1019/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631677840386" />
     <state x="2566" y="239" width="816" height="671" key="find.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631605041671" />
