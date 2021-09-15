@@ -1,8 +1,12 @@
 local LoginUI = class("BagUI", BaseUI)
-LoginUI.uiName = "loginUI"
-LoginUI.uiNode = "normal"
-LoginUI.resPath = "Assets/res/prefabs/login_ui.prefab"
-LoginUI.eventList = {}
+
+function LoginUI:getNode()
+    return UIConst.UI_NODE.NORMAL
+end
+
+function LoginUI:getResPath()
+    return "Assets/res/prefabs/login_ui.prefab"
+end
 
 function LoginUI:onLoadComplete()
     self.loginBtn = self.uiTransform:Find("login_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
@@ -10,28 +14,25 @@ function LoginUI:onLoadComplete()
 end
 
 function LoginUI:onRefresh()
-    --刷新
 end
 
 function LoginUI:onClose()
-    self:removeEvent(UIConst.eventType.LOGIN_EVENT)
+end
+
+function LoginUI:onCover()
 end
 
 function LoginUI:onInitEvent()
-    self:registerEvent(UIConst.eventType.LOGIN_EVENT, self.loginEvent)
-end
-
-function LoginUI:getResPath()
-    return self.resPath
+    self:registerEvent(UIConst.EVENT_TYPE.LOGIN_EVENT, function() self:loginEvent() end )
 end
 
 function LoginUI:loginBtnOnClick()
-    EventSystem:sendEvent(UIConst.eventType.LOGIN_EVENT)
+    EventSystem:sendEvent(UIConst.EVENT_TYPE.LOGIN_EVENT)
 end
 
 function LoginUI:loginEvent()
-    LoginUI:closeUI("loginUI")
-    UIManager:openUI(UIConst.uiType.MAIN_UI)
+    self:closeUI()
+    UIManager:openUI(UIConst.UI_TYPE.MAIN_UI)
 end
 
 return LoginUI

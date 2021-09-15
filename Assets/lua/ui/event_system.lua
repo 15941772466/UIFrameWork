@@ -1,6 +1,6 @@
 local EventSystem = {}
 
-function EventSystem:addListener(eventType,func)
+function EventSystem:addListener(eventType, func)
     if(eventType == nil)then
         Logger.log('在EventSystem:addListener中 eventType为空')
         return
@@ -10,15 +10,15 @@ function EventSystem:addListener(eventType,func)
         return
     end
     if(EventSystem[eventType] == nil)then
-        local a={}
-        table.insert(a,func)
+        local a = {}
+        table.insert(a, func)
         EventSystem[eventType] = a
     else
-        table.insert(EventSystem[eventType],func)
+        table.insert(EventSystem[eventType], func)
     end
 end
 
-function EventSystem:removeListener(eventType,func)
+function EventSystem:removeListener(eventType, func)
     if(eventType == nil)then
         Logger.log('在EventSystem:removeListener中 eventType为空')
         return
@@ -29,21 +29,19 @@ function EventSystem:removeListener(eventType,func)
     end
     local a = EventSystem[eventType]
     if(a ~= nil)then
-        for k,v in pairs(a) do
+        for k, v in pairs (a) do
             if(v == func)then
                 a[k] = nil
-                --Logger.log('EventSystem:removeListener 成功')
             end
         end
     end
-    --Logger.log('EventSystem:removeListener')
 end
 
-function EventSystem:sendEvent(eventType,...)
-    if(eventType ~= nil)then
+function EventSystem:sendEvent(eventType, ...)
+    if(eventType ~= nil) then
         local a = EventSystem[eventType]
         if(a ~= nil)then
-            for k,v in pairs(a) do
+            for _, v in pairs (a) do
                 v(...)
             end
         end

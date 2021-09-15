@@ -1,8 +1,12 @@
 local BagUI = class("BagUI", BaseUI)
-BagUI.uiName = "bagUI"
-BagUI.uiNode = "popup"
-BagUI.resPath = "Assets/res/prefabs/bag_ui.prefab"
-BagUI.eventList = {}
+
+function BagUI:getNode()
+    return UIConst.UI_NODE.POPUP
+end
+
+function BagUI:getResPath()
+    return "Assets/res/prefabs/bag_ui.prefab"
+end
 
 function BagUI:onLoadComplete()
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
@@ -10,27 +14,24 @@ function BagUI:onLoadComplete()
 end
 
 function BagUI:onRefresh()
-    --刷新
 end
 
 function BagUI:onClose()
-    self:removeEvent(UIConst.eventType.BAG_BACK_EVENT)
+end
+
+function BagUI:onCover()
 end
 
 function BagUI:onInitEvent()
-    self:registerEvent(UIConst.eventType.BAG_BACK_EVENT, self.bagBackEvent)
-end
-
-function BagUI:getResPath()
-    return self.resPath
+    self:registerEvent(UIConst.EVENT_TYPE.BAG_BACK_EVENT, function() self:bagBackEvent() end)
 end
 
 function BagUI:backBtnOnClick()
-    EventSystem:sendEvent(UIConst.eventType.BAG_BACK_EVENT)
+    EventSystem:sendEvent(UIConst.EVENT_TYPE.BAG_BACK_EVENT)
 end
 
 function BagUI:bagBackEvent()
-    BagUI:closeUI("bagUI")
+    self:closeUI()
 end
 
 return BagUI

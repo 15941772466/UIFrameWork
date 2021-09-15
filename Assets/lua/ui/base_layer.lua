@@ -1,4 +1,4 @@
-local BaseLayer = class("BaseLayer","BaseUI")
+local BaseLayer = class("BaseLayer", "BaseUI")
 
 local NORMAL_LAYER = "Assets/res/prefabs/normal.prefab"
 
@@ -11,7 +11,7 @@ function BaseLayer:ctor(layerName)
     end)
 
     obj.transform:SetParent(UIManager.uiRoot.transform)   ---- 出错了
-    BaseLayer.super:ctor(layerName,uiTransform)
+    BaseLayer.super:ctor(layerName, uiTransform)
 end
 
 ---- 打开层级
