@@ -113,7 +113,6 @@ function BaseUI:hide()
     local loading = true
     while loading do
         if self.uiTransform then
-            self:onClose()
             self.uiTransform.gameObject:SetActive(false)
             loading = false
         end
@@ -125,7 +124,6 @@ function BaseUI:delete()
     local loading = true
     while loading do
         if self.uiTransform then
-            self:onClose()
             for i, v in pairs (UIManager.uiTransformMap) do
                 if self.uiTransform == v then
                     UIManager.uiTransformMap[i] = nil
