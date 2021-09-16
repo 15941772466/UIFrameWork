@@ -117,6 +117,7 @@ function BaseUI:hide()
             loading = false
         end
     end
+    self:removeAllEvents()
 end
 
 function BaseUI:delete()
@@ -132,6 +133,7 @@ function BaseUI:delete()
             loading = false
         end
     end
+    self:removeAllEvents()
 end
 
 return BaseUI
