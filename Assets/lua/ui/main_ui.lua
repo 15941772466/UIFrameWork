@@ -16,9 +16,11 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
+    Logger.log("MainUI  刷新了")
 end
 
 function MainUI:onClose()
+    Logger.log("MainUI  关闭了")
 end
 
 function MainUI:onCover()

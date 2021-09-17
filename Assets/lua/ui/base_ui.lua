@@ -79,6 +79,9 @@ function BaseUI:startLoad(index)
         self:onLoadComplete()
         self:onInitEvent()
         self:onRefresh()
+        if self.closed then
+            self:closeUI()
+        end
     end)
 end
 
@@ -115,33 +118,27 @@ function BaseUI:closeUI()
 end
 
 function BaseUI:hide()
-    local loading = true
-    while loading do
-        if self.uiTransform then
-            self:removeAllEvents()
-            self:onClose()
-            self:topUIOnReShow()
-            self.uiTransform.gameObject:SetActive(false)
-            loading = false
-        end
+    self.closed = true
+    if self.uiTransform then
+        self:removeAllEvents()
+        self:onClose()
+        self:topUIOnReShow()
+        self.uiTransform.gameObject:SetActive(false)
     end
 end
 
 function BaseUI:delete()
-    local loading = true
-    while loading do
-        if self.uiTransform then
-            self:removeAllEvents()
-            self:onClose()
-            self:topUIOnReShow()
-            for i, v in pairs (UIManager.uiTransformMap) do
-                if self.uiTransform == v then
-                    UIManager.uiTransformMap[i] = nil
-                end
+    self.closed = true
+    if self.uiTransform then
+        self:removeAllEvents()
+        self:onClose()
+        self:topUIOnReShow()
+        for i, v in pairs (UIManager.uiTransformMap) do
+            if self.uiTransform == v then
+                UIManager.uiTransformMap[i] = nil
             end
-            CS.UnityEngine.GameObject.Destroy(self.uiTransform.gameObject)
-            loading = false
         end
+        CS.UnityEngine.GameObject.Destroy(self.uiTransform.gameObject)
     end
 end
 

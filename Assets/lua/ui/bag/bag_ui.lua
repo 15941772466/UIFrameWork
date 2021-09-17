@@ -14,9 +14,11 @@ function BagUI:onLoadComplete()
 end
 
 function BagUI:onRefresh()
+    Logger.log("BagUI  刷新了")
 end
 
 function BagUI:onClose()
+    Logger.log("BagUI  关闭了")
 end
 
 function BagUI:onCover()

@@ -3,6 +3,7 @@ local TypeOfGameObject = typeof(CS.UnityEngine.GameObject)
 local UI_ROOT_PATH = "Assets/res/prefabs/ui_root.prefab"
 local UI_CACHE_MAX = 4
 local index = 0
+
 ---- 加载资源
 function UIManager:loadAsset(assetPath, type, callback)
     CSMain:LoadAsset(assetPath, type, callback)
@@ -26,7 +27,7 @@ function UIManager:init()
         self.mask = self.uiRoot.transform:Find(UIConst.UI_NODE.MASK)
         self.mask.gameObject:SetActive(false)
         self:openUI(UIConst.UI_TYPE.LOGIN_UI)
-        --self:closeUIByType(uiType)
+        --self:closeUIByType(UIConst.UI_TYPE.LOGIN_UI)
     end)
 end
 
@@ -79,16 +80,20 @@ function UIManager:closeUI(uiObj)
         if v == uiObj then
             if #self.uiCacheList < UI_CACHE_MAX then
                 v:hide()
-                table.insert(self.uiCacheList, v)
+                if uiObj.transform then
+                    table.insert(self.uiCacheList, v)
+                end
             else
                 v:delete()
             end
-            table.remove(self.uiList, i)
-            if v.uiNode == UIConst.UI_NODE.POPUP then
-                self.mask.gameObject:SetActive(false)
+            if uiObj.transform then
+                table.remove(self.uiList, i)
             end
             break
         end
+    end
+    if uiObj.uiNode == UIConst.UI_NODE.POPUP then
+        self.mask.gameObject:SetActive(false)
     end
 end
 
@@ -99,30 +104,27 @@ function UIManager:closeUIByType(uiType)
             uiObj = v
         end
     end
+
     if #self.uiCacheList < UI_CACHE_MAX then
         uiObj:hide()
-        table.insert(self.uiCacheList, uiObj)
+        if uiObj.uiTransform then
+            table.insert(self.uiCacheList, uiObj)
+        end
     else
-         uiObj:delete()
+        uiObj:delete()
     end
-    for i, v in ipairs (self.uiList) do
-        if v.uiType == uiType then
-            table.remove(self.uiList, i)
-            break
+
+    if uiObj.uiTransform then
+        for i, v in ipairs (self.uiList) do
+            if v.uiType == uiType then
+                table.remove(self.uiList, i)
+                break
+            end
         end
     end
+
     if uiObj.uiNode == UIConst.UI_NODE.POPUP then
         self.mask.gameObject:SetActive(false)
-    end
-end
-
-function UIManager:deleteUIByType(uiType)
-    for i, v in ipairs (self.uiList) do
-        if v.uiType == uiType then
-            v:delete()
-            table.remove(self.uiList, i)
-            break
-        end
     end
 end
 

@@ -14,9 +14,11 @@ function LoginUI:onLoadComplete()
 end
 
 function LoginUI:onRefresh()
+    Logger.log("LoginUI  刷新了")
 end
 
 function LoginUI:onClose()
+    Logger.log("LoginUI  关闭了")
 end
 
 function LoginUI:onCover()
