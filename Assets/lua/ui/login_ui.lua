@@ -20,6 +20,11 @@ function LoginUI:onClose()
 end
 
 function LoginUI:onCover()
+    Logger.log("LoginUI  被覆盖了")
+end
+
+function LoginUI:onReShow()
+    Logger.log("LoginUI  被重新打开了")
 end
 
 function LoginUI:onInitEvent()
@@ -31,6 +36,7 @@ function LoginUI:loginBtnOnClick()
 end
 
 function LoginUI:loginEvent()
+    UIManager:closeUIByType(UIConst.UI_TYPE.LOGIN_UI)
     self:closeUI()
     UIManager:openUI(UIConst.UI_TYPE.MAIN_UI)
 end

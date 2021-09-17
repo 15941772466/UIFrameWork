@@ -14,31 +14,46 @@ function BaseUI:onInitEvent() end
 
 function BaseUI:onCover() end
 
+function BaseUI:onReShow(...)
+end
+
 function BaseUI:registerEvent(eventType, func)
-    table.insert(self.eventTypeList, eventType)
-    if(self.eventList[eventType] == nil)then
-        local a = {}
-        table.insert(a, func)
-        self.eventList[eventType] = a
-    else
-        table.insert(self.eventList[eventType], func)
+    for _, v in ipairs(self.eventTypeList) do
+        if v == eventType then
+            table.insert(self.eventMap[eventType], func)
+            EventSystem:addListener(eventType, func)
+            return
+        end
     end
+    table.insert(self.eventTypeList, eventType)
+    local a = {}
+    table.insert(a, func)
+    self.eventMap[eventType] = a
     EventSystem:addListener(eventType, func)
 end
 
 function BaseUI:removeEvent(eventType)
-    for i, v in ipairs(self.eventList[eventType]) do
-        EventSystem:removeListener(eventType, v)
-        table.remove(self.eventList[eventType], i)
+    if self.eventMap then
+        self.eventMap = {}
     end
+    for _, v in ipairs(self.eventMap[eventType]) do
+        EventSystem:removeListener(eventType, v)
+    end
+    self.eventMap[eventType] = {}
 end
 
 function BaseUI:removeAllEvents()
+    if not self.eventMap then
+        self.eventMap = {}
+    end
+    if not self.eventTypeList then
+        self.eventTypeList = {}
+    end
     for _, eventType in ipairs(self.eventTypeList) do
-        for i, v in ipairs(self.eventList[eventType]) do
+        for _, v in ipairs(self.eventMap[eventType]) do
             EventSystem:removeListener(eventType, v)
-            table.remove(self.eventList[eventType], i)
         end
+        self.eventMap[eventType] = {}
     end
 end
 
@@ -55,9 +70,10 @@ function BaseUI:startLoad(index)
             index = index + 1
         end
         self.index = index
+        self:topUIOnCover()
         UIManager.uiTransformMap[index] = gameObject.transform
         self.uiTransform = gameObject.transform
-        self.eventList = {}
+        self.eventMap = {}
         self.eventTypeList = {}
         self:setUIOrder(index)
         self:onLoadComplete()
@@ -78,23 +94,12 @@ function BaseUI:show(index)
     self.index = index
     UIManager.uiTransformMap[index] = self.uiTransform
     self:setUIOrder(index)
-end
-
-function BaseUI:reShow(index)
-    if self:getNode() == UIConst.UI_NODE.POPUP then
-        UIManager.mask.gameObject:SetActive(true)
-        UIManager.uiTransformMap[index] = UIManager.mask
-        self:setUIOrder(index)
-        index = index + 1
+    if not self.gameObject.activeSelf then
+        self.uiTransform.gameObject:SetActive(true)
+        self:onInitEvent()
+        self:onRefresh()
     end
-
-    UIManager.uiTransformMap[self.index] = nil
-    self.index = index
-    UIManager.uiTransformMap[index] = self.uiTransform
-    self:setUIOrder(index)
-    self.uiTransform.gameObject:SetActive(true)
-    self:onInitEvent()
-    self:onRefresh()
+    self:topUIOnCover()
 end
 
 function BaseUI:setUIOrder(index)
@@ -113,17 +118,22 @@ function BaseUI:hide()
     local loading = true
     while loading do
         if self.uiTransform then
+            self:removeAllEvents()
+            self:onClose()
+            self:topUIOnReShow()
             self.uiTransform.gameObject:SetActive(false)
             loading = false
         end
     end
-    self:removeAllEvents()
 end
 
 function BaseUI:delete()
     local loading = true
     while loading do
         if self.uiTransform then
+            self:removeAllEvents()
+            self:onClose()
+            self:topUIOnReShow()
             for i, v in pairs (UIManager.uiTransformMap) do
                 if self.uiTransform == v then
                     UIManager.uiTransformMap[i] = nil
@@ -133,7 +143,68 @@ function BaseUI:delete()
             loading = false
         end
     end
-    self:removeAllEvents()
+end
+
+function BaseUI:topUIOnCover()
+    local topIndex = 0
+    local top2Index = 0
+    local topUI
+    local top2UI
+    if #UIManager.uiList >= 2 then
+        for _, v in ipairs (UIManager.uiList) do
+            if v.index >= topIndex then
+                topIndex = v.index
+            end
+        end
+        for _, v in ipairs(UIManager.uiList) do
+            if v.index == topIndex then
+                topUI = v
+            end
+            break
+        end
+
+        if self == topUI then    --当外部打开自己，自己即为顶层时
+            return
+        end
+
+        for _, v in ipairs(UIManager.uiList) do
+            if v.index < topIndex and v.index > top2Index then
+                top2Index = v.index
+            end
+        end
+        for _, v in ipairs(UIManager.uiList) do
+            if v.index == top2Index then
+                top2UI = v
+            end
+            break
+        end
+        top2UI:onCover()
+    end
+end
+
+function BaseUI:topUIOnReShow()
+    local topIndex = 0
+    local top2Index = 0
+    local top2UI = 0
+    if #UIManager.uiList >= 2 then
+        for _, v in ipairs (UIManager.uiList) do
+            if v.index >= topIndex then
+                topIndex = v.index
+            end
+        end
+        for _, v in ipairs(UIManager.uiList) do
+            if v.index < topIndex and v.index > top2Index then
+                top2Index = v.index
+            end
+        end
+        for _, v in ipairs(UIManager.uiList) do
+            if v.index == top2Index then
+                top2UI = v
+            end
+            break
+        end
+        top2UI:onReShow()
+    end
 end
 
 return BaseUI

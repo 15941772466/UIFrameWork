@@ -20,6 +20,11 @@ function BagUI:onClose()
 end
 
 function BagUI:onCover()
+    Logger.log("BagUI  被覆盖了")
+end
+
+function BagUI:onReShow()
+    Logger.log("BagUI  被重新打开了")
 end
 
 function BagUI:onInitEvent()

@@ -3,7 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

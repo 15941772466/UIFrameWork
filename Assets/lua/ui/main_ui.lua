@@ -22,8 +22,12 @@ function MainUI:onClose()
 end
 
 function MainUI:onCover()
+    Logger.log("MainUI  被覆盖了")
 end
 
+function MainUI:onReShow()
+    Logger.log("MainUI  被重新打开了")
+end
 function MainUI:onInitEvent()
     self:registerEvent(UIConst.EVENT_TYPE.MAIN_BACK_EVENT, function() self:mainBackEvent() end)
     self:registerEvent(UIConst.EVENT_TYPE.BAG_EVENT, function() self:bagEvent() end)
