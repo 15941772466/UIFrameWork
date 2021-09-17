@@ -91,7 +91,6 @@ function BaseUI:show(index)
         self:setUIOrder(index)
         index = index + 1
     end
-
     UIManager.uiTransformMap[self.index] = nil
     self.index = index
     UIManager.uiTransformMap[index] = self.uiTransform
@@ -158,11 +157,9 @@ function BaseUI:topUIOnCover()
             end
             break
         end
-
-        if self == topUI then    --当外部打开自己，自己即为顶层时
+        if self == topUI then    --当外部打开某UI，而该UI已经打开且为顶层时
             return
         end
-
         for _, v in ipairs (UIManager.uiList) do
             if v.index < topIndex and v.index > top2Index then
                 top2Index = v.index
