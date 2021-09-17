@@ -14,11 +14,10 @@ function BaseUI:onInitEvent() end
 
 function BaseUI:onCover() end
 
-function BaseUI:onReShow(...)
-end
+function BaseUI:onReShow() end
 
 function BaseUI:registerEvent(eventType, func)
-    for _, v in ipairs(self.eventTypeList) do
+    for _, v in ipairs (self.eventTypeList) do
         if v == eventType then
             table.insert(self.eventMap[eventType], func)
             EventSystem:addListener(eventType, func)
@@ -36,7 +35,7 @@ function BaseUI:removeEvent(eventType)
     if self.eventMap then
         self.eventMap = {}
     end
-    for _, v in ipairs(self.eventMap[eventType]) do
+    for _, v in pairs (self.eventMap[eventType]) do
         EventSystem:removeListener(eventType, v)
     end
     self.eventMap[eventType] = {}
@@ -49,8 +48,8 @@ function BaseUI:removeAllEvents()
     if not self.eventTypeList then
         self.eventTypeList = {}
     end
-    for _, eventType in ipairs(self.eventTypeList) do
-        for _, v in ipairs(self.eventMap[eventType]) do
+    for _, eventType in ipairs (self.eventTypeList) do
+        for _, v in pairs (self.eventMap[eventType]) do
             EventSystem:removeListener(eventType, v)
         end
         self.eventMap[eventType] = {}
@@ -60,6 +59,8 @@ end
 function BaseUI:startLoad(index)
     local path = self:getResPath()
     UIManager:loadGameObject(path, function(gameObject)
+        self.eventMap = {}
+        self.eventTypeList = {}
         self.gameObject = gameObject
         self.uiNode = self:getNode()
         self.gameObject.transform:SetParent(UIManager.normal.transform, false)
@@ -70,12 +71,10 @@ function BaseUI:startLoad(index)
             index = index + 1
         end
         self.index = index
-        self:topUIOnCover()
         UIManager.uiTransformMap[index] = gameObject.transform
         self.uiTransform = gameObject.transform
-        self.eventMap = {}
-        self.eventTypeList = {}
         self:setUIOrder(index)
+        self:topUIOnCover()
         self:onLoadComplete()
         self:onInitEvent()
         self:onRefresh()
@@ -153,7 +152,7 @@ function BaseUI:topUIOnCover()
                 topIndex = v.index
             end
         end
-        for _, v in ipairs(UIManager.uiList) do
+        for _, v in ipairs (UIManager.uiList) do
             if v.index == topIndex then
                 topUI = v
             end
@@ -164,12 +163,12 @@ function BaseUI:topUIOnCover()
             return
         end
 
-        for _, v in ipairs(UIManager.uiList) do
+        for _, v in ipairs (UIManager.uiList) do
             if v.index < topIndex and v.index > top2Index then
                 top2Index = v.index
             end
         end
-        for _, v in ipairs(UIManager.uiList) do
+        for _, v in ipairs (UIManager.uiList) do
             if v.index == top2Index then
                 top2UI = v
             end
@@ -189,12 +188,12 @@ function BaseUI:topUIOnReShow()
                 topIndex = v.index
             end
         end
-        for _, v in ipairs(UIManager.uiList) do
+        for _, v in ipairs (UIManager.uiList) do
             if v.index < topIndex and v.index > top2Index then
                 top2Index = v.index
             end
         end
-        for _, v in ipairs(UIManager.uiList) do
+        for _, v in ipairs (UIManager.uiList) do
             if v.index == top2Index then
                 top2UI = v
             end
