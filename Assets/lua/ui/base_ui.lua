@@ -146,9 +146,7 @@ end
 
 function BaseUI:topUIOnCover()
     local topIndex = 0
-    local top2Index = 0
     local topUI
-    local top2UI
     if #UIManager.uiList >= 2 then
         for _, v in ipairs (UIManager.uiList) do
             if v.index < self.index and v.index >= topIndex then
