@@ -27,6 +27,8 @@ function UIManager:init()
         self.mask = self.uiRoot.transform:Find(UIConst.UI_NODE.MASK)
         self.mask.gameObject:SetActive(false)
         self:openUI(UIConst.UI_TYPE.LOGIN_UI)
+        self:openUI(UIConst.UI_TYPE.MAIN_UI)
+        self:openUI(UIConst.UI_TYPE.BAG_UI)
         --self:closeUIByType(UIConst.UI_TYPE.LOGIN_UI)
     end)
 end
@@ -80,13 +82,13 @@ function UIManager:closeUI(uiObj)
         if v == uiObj then
             if #self.uiCacheList < UI_CACHE_MAX then
                 v:hide()
-                if uiObj.transform then
+                if uiObj.uiTransform then
                     table.insert(self.uiCacheList, v)
                 end
             else
                 v:delete()
             end
-            if uiObj.transform then
+            if uiObj.uiTransform then
                 table.remove(self.uiList, i)
             end
             break

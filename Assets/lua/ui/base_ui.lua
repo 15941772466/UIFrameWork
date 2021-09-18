@@ -151,26 +151,18 @@ function BaseUI:topUIOnCover()
     local top2UI
     if #UIManager.uiList >= 2 then
         for _, v in ipairs (UIManager.uiList) do
-            if v.index >= topIndex then
+            if v.index < self.index and v.index >= topIndex then
                 topIndex = v.index
                 topUI = v
             end
         end
-        --当外部打开某UI，而该UI已经打开且为顶层时
-        if self == topUI then
-            return
-        end
-        for _, v in ipairs (UIManager.uiList) do
-            if v.index < topIndex and v.index > top2Index then
-                top2Index = v.index
-                top2UI = v
+        if topUI then
+            if topUI.uiTransform then
+                topUI:onCover()
+            else
+                topUI.covered = true
             end
         end
-        if top2UI.uiTransform then
-            top2UI.covered = true
-            return
-        end
-        top2UI:onCover()
     end
 end
 
