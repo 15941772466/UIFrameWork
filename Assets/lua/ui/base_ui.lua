@@ -32,8 +32,8 @@ function BaseUI:registerEvent(eventType, func)
 end
 
 function BaseUI:removeEvent(eventType)
-    if self.eventMap then
-        self.eventMap = {}
+    if not self.eventMap then
+        return
     end
     for _, v in pairs (self.eventMap[eventType]) do
         EventSystem:removeListener(eventType, v)
@@ -43,10 +43,10 @@ end
 
 function BaseUI:removeAllEvents()
     if not self.eventMap then
-        self.eventMap = {}
+        return
     end
     if not self.eventTypeList then
-        self.eventTypeList = {}
+        return
     end
     for _, eventType in ipairs (self.eventTypeList) do
         for _, v in pairs (self.eventMap[eventType]) do
@@ -64,7 +64,7 @@ function BaseUI:startLoad(index)
         self.gameObject = gameObject
         self.uiNode = self:getNode()
         self.gameObject.transform:SetParent(UIManager.normal.transform, false)
-        if  self.uiNode == UIConst.UI_NODE.POPUP then
+        if self.uiNode == UIConst.UI_NODE.POPUP then
             UIManager.mask.gameObject:SetActive(true)
             UIManager.uiTransformMap[index] = UIManager.mask
             self:setUIOrder(index)
@@ -76,10 +76,14 @@ function BaseUI:startLoad(index)
         self:setUIOrder(index)
         self:topUIOnCover()
         self:onLoadComplete()
-        self:onInitEvent()
-        self:onRefresh()
         if self.closed then
             self:closeUI()
+            return
+        end
+        self:onInitEvent()
+        self:onRefresh()
+        if self.covered then
+            self:onCover()
         end
     end)
 end
@@ -149,27 +153,22 @@ function BaseUI:topUIOnCover()
         for _, v in ipairs (UIManager.uiList) do
             if v.index >= topIndex then
                 topIndex = v.index
-            end
-        end
-        for _, v in ipairs (UIManager.uiList) do
-            if v.index == topIndex then
                 topUI = v
             end
-            break
         end
-        if self == topUI then    --当外部打开某UI，而该UI已经打开且为顶层时
+        --当外部打开某UI，而该UI已经打开且为顶层时
+        if self == topUI then
             return
         end
         for _, v in ipairs (UIManager.uiList) do
             if v.index < topIndex and v.index > top2Index then
                 top2Index = v.index
-            end
-        end
-        for _, v in ipairs (UIManager.uiList) do
-            if v.index == top2Index then
                 top2UI = v
             end
-            break
+        end
+        if top2UI.uiTransform then
+            top2UI.covered = true
+            return
         end
         top2UI:onCover()
     end
@@ -188,13 +187,8 @@ function BaseUI:topUIOnReShow()
         for _, v in ipairs (UIManager.uiList) do
             if v.index < topIndex and v.index > top2Index then
                 top2Index = v.index
-            end
-        end
-        for _, v in ipairs (UIManager.uiList) do
-            if v.index == top2Index then
                 top2UI = v
             end
-            break
         end
         top2UI:onReShow()
     end

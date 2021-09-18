@@ -38,7 +38,6 @@ function LoginUI:loginBtnOnClick()
 end
 
 function LoginUI:loginEvent()
-    UIManager:closeUIByType(UIConst.UI_TYPE.LOGIN_UI)
     self:closeUI()
     UIManager:openUI(UIConst.UI_TYPE.MAIN_UI)
 end
