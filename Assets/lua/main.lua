@@ -29,7 +29,10 @@ function Main:initLua()
     DH.UIManager = require "ui/ui_manager"
     DH.BaseUI = require "ui/base_ui"
     DH.UIConst = require "ui/ui_const"
-    DH.EventSystem = require "ui/event_system"
+    DH.EventSystem = require "common/event_system"
+    DH.BagDataManager = require "ui/bag/bag_data_manager"
+    DH.Config = require "ui/bag/item"
+    DH.BagController = require "ui/bag/bag_controller"
 
     UIManager:init()
 end

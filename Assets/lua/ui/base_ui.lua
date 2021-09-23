@@ -63,7 +63,14 @@ function BaseUI:startLoad(index)
         self.eventTypeList = {}
         self.gameObject = gameObject
         self.uiNode = self:getNode()
-        self.gameObject.transform:SetParent(UIManager.normal.transform, false)
+        if self.uiNode == UIConst.UI_NODE.BAG then
+            if not UIManager.bagNode then
+                UIManager.bagNode = UIManager.uiRoot.transform:Find(UIConst.UI_NODE.BAG)
+            end
+            self.gameObject.transform:SetParent(UIManager.bagNode.transform, false)
+        else
+            self.gameObject.transform:SetParent(UIManager.normal.transform, false)
+        end
         if self.uiNode == UIConst.UI_NODE.POPUP then
             UIManager.mask.gameObject:SetActive(true)
             UIManager.uiTransformMap[index] = UIManager.mask

@@ -14,19 +14,19 @@ function LoginUI:onLoadComplete()
 end
 
 function LoginUI:onRefresh()
-    Logger.log("LoginUI  刷新了")
+    Logger.log("LoginUI  刷新 ")
 end
 
 function LoginUI:onClose()
-    Logger.log("LoginUI  关闭了")
+    Logger.log("LoginUI  关闭 ")
 end
 
 function LoginUI:onCover()
-    Logger.log("LoginUI  被覆盖了")
+    Logger.log("LoginUI  被覆盖 ")
 end
 
 function LoginUI:onReShow()
-    Logger.log("LoginUI  被重新打开了")
+    Logger.log("LoginUI  被重新打开 ")
 end
 
 function LoginUI:onInitEvent()

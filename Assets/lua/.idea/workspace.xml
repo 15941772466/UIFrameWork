@@ -2,8 +2,30 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/item.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/item.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/event_system.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/event_system.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/bag_ui.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/bag_ui.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/main_ui.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/main_ui.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -13,8 +35,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="NewLua" />
         <option value="CreateLua" />
+        <option value="NewLua" />
       </list>
     </option>
   </component>
@@ -43,7 +65,7 @@
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.eslint" value="(autodetect)" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
-    <property name="settings.editor.selected.configurable" value="fileTemplates" />
+    <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -65,6 +87,14 @@
       <workItem from="1631584283224" duration="27000" />
       <workItem from="1631584323837" duration="254000" />
       <workItem from="1631584664397" duration="2885000" />
+      <workItem from="1632276942867" duration="104000" />
+      <workItem from="1632277053264" duration="2488000" />
+      <workItem from="1632289083344" duration="11151000" />
+      <workItem from="1632360757286" duration="297000" />
+      <workItem from="1632361061293" duration="83000" />
+      <workItem from="1632361263751" duration="186000" />
+      <workItem from="1632361465331" duration="767000" />
+      <workItem from="1632362250771" duration="6943000" />
     </task>
     <servers />
   </component>
@@ -83,14 +113,19 @@
       <screen x="0" y="25" width="1792" height="1015" />
     </state>
     <state x="619" y="337" key="#com.intellij.fileTypes.FileTypeChooser/0.25.1792.1015@0.25.1792.1015" timestamp="1631258417084" />
+    <state x="2440" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog" timestamp="1632277092783">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2440" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632277092783" />
     <state x="484" y="277" key="IDE.errors.dialog" timestamp="1631267742783">
       <screen x="0" y="25" width="1792" height="1015" />
     </state>
     <state x="484" y="277" key="IDE.errors.dialog/0.25.1792.1015@0.25.1792.1015" timestamp="1631267742783" />
-    <state x="2261" y="146" key="SettingsEditor" timestamp="1631585302484">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="2261" y="136" key="SettingsEditor" timestamp="1632361608187">
+      <screen x="1792" y="25" width="1920" height="966" />
     </state>
     <state x="2261" y="146" key="SettingsEditor/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631585302484" />
+    <state x="2261" y="136" key="SettingsEditor/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632361608187" />
     <state width="500" height="445" key="SwitcherDM" timestamp="1631583615200">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
@@ -99,15 +134,16 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2208" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631857527107" />
-    <state x="2209" y="258" width="1173" height="729" key="find.popup" timestamp="1631847806117">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="2410" y="299" width="1173" height="668" key="find.popup" timestamp="1632368895253">
+      <screen x="1792" y="25" width="1920" height="966" />
     </state>
-    <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631847806117" />
+    <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632290255212" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631696734129" />
     <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631701068267" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631699841587" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1015/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631688586081" />
     <state x="2182" y="257" width="1200" height="730" key="find.popup/0.25.1792.1019/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631677840386" />
+    <state x="2410" y="299" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632368895253" />
     <state x="2566" y="239" width="816" height="671" key="find.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631605041671" />
     <state width="643" height="444" key="javadoc.popup" timestamp="1631601085852">
       <screen x="1792" y="25" width="1920" height="1055" />

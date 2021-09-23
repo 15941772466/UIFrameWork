@@ -16,19 +16,19 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
-    Logger.log("MainUI  刷新了")
+    Logger.log("MainUI  刷新 ")
 end
 
 function MainUI:onClose()
-    Logger.log("MainUI  关闭了")
+    Logger.log("MainUI  关闭 ")
 end
 
 function MainUI:onCover()
-    Logger.log("MainUI  被覆盖了")
+    Logger.log("MainUI  被覆盖 ")
 end
 
 function MainUI:onReShow()
-    Logger.log("MainUI  被重新打开了")
+    Logger.log("MainUI  被重新打开 ")
 end
 
 function MainUI:onInitEvent()
