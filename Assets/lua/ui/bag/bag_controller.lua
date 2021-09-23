@@ -1,7 +1,11 @@
 local BagController = {}
 
+function BagController:getItems()
+    return BagDataManager.bagPropNumberMap
+end
+
 function BagController:getPropNum(id)
-    return BagDataManager.bagDataMap[id]
+    return BagDataManager.bagPropNumberMap[id]
 end
 
 function BagController:useProp(id)

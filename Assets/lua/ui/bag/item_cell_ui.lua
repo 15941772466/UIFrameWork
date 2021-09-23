@@ -11,6 +11,8 @@ end
 function ItemCellUI:onLoadComplete()
     self.selfBtn = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.selfBtn.onClick:AddListener(self.selfBtnOnClick)
+    self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
+    self.number.text = " "
 end
 
 function ItemCellUI:onRefresh()

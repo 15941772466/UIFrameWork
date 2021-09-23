@@ -2,30 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/item.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/item.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua.meta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_controller.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/event_system.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/event_system.lua.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/login_ui.lua.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/main_ui.lua.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/bag_ui.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/bag_ui.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../res/prefabs/main_ui.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/../res/prefabs/main_ui.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +74,7 @@
       <workItem from="1632361061293" duration="83000" />
       <workItem from="1632361263751" duration="186000" />
       <workItem from="1632361465331" duration="767000" />
-      <workItem from="1632362250771" duration="6943000" />
+      <workItem from="1632362250771" duration="8625000" />
     </task>
     <servers />
   </component>
