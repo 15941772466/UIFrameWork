@@ -30,9 +30,7 @@ function Main:initLua()
     DH.BaseUI = require "ui/base_ui"
     DH.UIConst = require "ui/ui_const"
     DH.EventSystem = require "common/event_system"
-    DH.BagDataManager = require "ui/bag/bag_data_manager"
-    DH.Config = require "ui/bag/item"
-    DH.BagController = require "ui/bag/bag_controller"
+    DH.DataManager = require "data/data_manager"
 
     UIManager:init()
 end
@@ -43,6 +41,7 @@ function Main:initForIdea()
     BaseUI = BaseUI or require "ui/base_ui"
     UIConst = UIConst or require "ui/ui_const"
     EventSystem = EventSystem or require "ui/event_system"
+    DataManager = DataManager or require "data/data_manager"
 end
 
 ---- 禁用全局变量

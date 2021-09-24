@@ -2,11 +2,23 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/config.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bag_data.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/data_manager.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/itemEntity.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/itemEntity.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/module/bag.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/common/event_system.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/bag/bag_controller.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/bag/item.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_controller.lua" beforeDir="false" afterPath="$PROJECT_DIR$/module/bag/bag_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_controller.lua.meta" beforeDir="false" afterPath="$PROJECT_DIR$/module/bag/bag_controller.lua.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_data_manager.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item.lua" beforeDir="false" afterPath="$PROJECT_DIR$/config/item.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item.lua.meta" beforeDir="false" afterPath="$PROJECT_DIR$/config/item.lua.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main/main_ui.lua" afterDir="false" />
@@ -51,6 +63,14 @@
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="configurable.group.appearance" />
   </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/data" />
+      <recent name="$PROJECT_DIR$/config" />
+      <recent name="$PROJECT_DIR$/module/bag" />
+      <recent name="$PROJECT_DIR$/module" />
+    </key>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -79,7 +99,7 @@
       <workItem from="1632361263751" duration="186000" />
       <workItem from="1632361465331" duration="767000" />
       <workItem from="1632362250771" duration="10974000" />
-      <workItem from="1632446749994" duration="15052000" />
+      <workItem from="1632446749994" duration="20028000" />
     </task>
     <servers />
   </component>
@@ -102,6 +122,10 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2440" y="248" key="#com.intellij.openapi.updateSettings.impl.PluginUpdateInfoDialog/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632277092783" />
+    <state x="2490" y="259" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1632475685980">
+      <screen x="1792" y="25" width="1920" height="1055" />
+    </state>
+    <state x="2490" y="259" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632475685980" />
     <state x="484" y="277" key="IDE.errors.dialog" timestamp="1631267742783">
       <screen x="0" y="25" width="1792" height="1015" />
     </state>
@@ -119,10 +143,10 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2208" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631857527107" />
-    <state x="2410" y="299" width="1173" height="668" key="find.popup" timestamp="1632378137355">
-      <screen x="1792" y="25" width="1920" height="966" />
+    <state x="2209" y="258" width="1173" height="729" key="find.popup" timestamp="1632475699027">
+      <screen x="1792" y="25" width="1920" height="1055" />
     </state>
-    <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632290255212" />
+    <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632475699027" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631696734129" />
     <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631701068267" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631699841587" />

@@ -11,7 +11,7 @@ end
 function BagUI:onLoadComplete()
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn.onClick:AddListener(self.backBtnOnClick)
-    for i, v in pairs (BagController:getItems()) do
+    for i, v in pairs (BagManager:getItems()) do
         UIManager:openUI(UIConst.UI_TYPE.ITEM_CELL_UI, true, i)
     end
 end

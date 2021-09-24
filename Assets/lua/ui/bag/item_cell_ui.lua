@@ -14,14 +14,14 @@ end
 
 function ItemCellUI:onLoadComplete()
     self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
-    self.number.text =  BagController:getPropNum(self.itemID)
+    self.number.text =  BagManager:getPropNum(self.itemID)
     self.selfBtn = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.selfBtn.onClick:AddListener(function() self:selfBtnOnClick() end)
 end
 
 function ItemCellUI:onRefresh()
     if self.number then
-        self.number.text =  BagController:getPropNum(self.itemID)
+        self.number.text =  BagManager:getPropNum(self.itemID)
     end
 end
 

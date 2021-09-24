@@ -17,7 +17,7 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
-    local coins = BagController:getCoinsNum()
+    local coins = BagManager:getCoinsNum()
     self.coins.text = "金币： "..coins
 end
 
