@@ -1,6 +1,6 @@
-local ItemCellUI = class("ItemCellUI", BaseUI)
+local ItemCellUI = class("ItemCellUI")
 
-function BaseUI:ctor(itemID)
+function ItemCellUI:ctor(itemID)
     self.itemID = itemID
 end
 
@@ -10,6 +10,25 @@ end
 
 function ItemCellUI:getResPath()
     return "Assets/res/prefabs/item_cell_ui.prefab"
+end
+
+function ItemCellUI:startLoad()
+    local path = self:getResPath()
+    UIManager:loadGameObject(path, function(gameObject)
+        self.eventMap = {}
+        self.eventTypeList = {}
+        self.gameObject = gameObject
+        self.uiNode = self:getNode()
+        if not UIManager.bagNode then
+            UIManager.bagNode = UIManager.uiRoot.transform:Find(UIConst.UI_NODE.BAG)
+        end
+        self.gameObject.transform:SetParent(UIManager.bagNode.transform, false)
+        self.uiTransform = gameObject.transform
+        self:onLoadComplete()
+        self:onInitEvent()
+        self:onRefresh()
+
+    end)
 end
 
 function ItemCellUI:onLoadComplete()
@@ -25,28 +44,10 @@ function ItemCellUI:onRefresh()
     end
 end
 
-function ItemCellUI:onClose()
-    Logger.log("ItemCellUI  关闭")
-end
-
-function ItemCellUI:onCover()
-    Logger.log("ItemCellUI  被覆盖")
-end
-
-function ItemCellUI:onReShow()
-    Logger.log("ItemCellUI  被重新打开")
-end
-
-function ItemCellUI:onInitEvent()
-    self:registerEvent(self.itemID, function() self:onClickEvent() end)
-end
-
 function ItemCellUI:selfBtnOnClick()
-    EventSystem:sendEvent(self.itemID)
+    UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, self.itemID)
 end
 
-function ItemCellUI:onClickEvent()
-    UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, false, self.itemID)
-end
+
 
 return ItemCellUI

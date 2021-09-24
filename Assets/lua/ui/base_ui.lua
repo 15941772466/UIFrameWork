@@ -1,6 +1,6 @@
 local BaseUI = {}
 
-function BaseUI:ctor(...) end
+function BaseUI:ctor() end
 
 function BaseUI:getResPath() end
 
@@ -95,7 +95,7 @@ function BaseUI:startLoad(index)
     end)
 end
 
-function BaseUI:show(index, itemID)
+function BaseUI:show(index)
     if self:getNode() == UIConst.UI_NODE.POPUP then
         UIManager.mask.gameObject:SetActive(true)
         UIManager.uiTransformMap[index] = UIManager.mask
@@ -109,7 +109,7 @@ function BaseUI:show(index, itemID)
     if not self.gameObject.activeSelf then
         self.uiTransform.gameObject:SetActive(true)
         self:onInitEvent()
-        self:onRefresh(itemID)
+        self:onRefresh()
     end
     self:topUIOnCover()
 end

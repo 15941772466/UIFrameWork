@@ -34,15 +34,8 @@ function UIManager:init()
     end)
 end
 
-function UIManager:openUI(uiType, isItem, itemID)
+function UIManager:openUI(uiType, itemID)
     local uiObj
-    if isItem then
-        uiObj = require(uiType):create(itemID)
-        uiObj.uiType = uiType
-        uiObj:startLoad(index)
-        table.insert(self.itemList, uiObj)
-        return
-    end
     index = index + 1
 
     uiObj = self:checkOpen(uiType)

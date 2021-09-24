@@ -30,4 +30,7 @@ function BagData:getItemQuality(id)
     return self.bagDataMap[id]:getQuality()
 end
 
+function BagData:getAllItemsNum()
+    return #self.bagDataList
+end
 return BagData

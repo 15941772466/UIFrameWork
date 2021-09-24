@@ -1,5 +1,7 @@
 local BagUI = class("BagUI", BaseUI)
 
+local BagManager = require "module/bag/bag_manager"
+
 function BagUI:getNode()
     return UIConst.UI_NODE.POPUP
 end
@@ -11,13 +13,15 @@ end
 function BagUI:onLoadComplete()
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn.onClick:AddListener(self.backBtnOnClick)
-    for i, v in pairs (BagManager:getItems()) do
-        UIManager:openUI(UIConst.UI_TYPE.ITEM_CELL_UI, true, i)
+
+    for _, v in pairs (BagManager:getBagDataList()) do
+        local itemCellUI = require("ui/bag/item_cell_ui"):create(v.id)
+        itemCellUI:startLoad()
     end
 end
 
 function BagUI:onRefresh()
-    for i, v in ipairs (UIManager.itemList) do
+    for _, v in ipairs (BagManager:getBagDataList()) do
         v:onRefresh()
     end
 end
@@ -47,7 +51,5 @@ end
 function BagUI:bagBackEvent()
     self:closeUI()
 end
-
-
 
 return BagUI

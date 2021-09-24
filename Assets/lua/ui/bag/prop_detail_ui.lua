@@ -1,5 +1,7 @@
 local PropDetailUI = class("PropDetailUI", BaseUI)
 
+local BagManager = require "module/bag/bag_manager"
+
 function BaseUI:ctor(itemID)
     self.itemID = itemID
 end
@@ -28,9 +30,8 @@ function PropDetailUI:onRefresh(itemID)
         self.itemID = itemID
     end
     local item = BagManager:getItem(self.itemID)
-    local number = BagManager:getPropNum(self.itemID)
-    self.introduction.text = "道具介绍：\n\n"..item["name"]..":\n".."    "..item["describe"]
-    self.number.text = "剩余数量："..number
+    self.introduction.text = "道具介绍：\n\n"..item:getName()..":\n".."    "..item:getDescribe()
+    self.number.text = "剩余数量："..item:getNum()
 end
 
 function PropDetailUI:onClose()

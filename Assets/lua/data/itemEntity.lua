@@ -14,6 +14,18 @@ function ItemEntity:getNum()
     return self.num
 end
 
+function ItemEntity:getName()
+    return items.data[self.id]["name"]
+end
+
+function ItemEntity:getPrice()
+    return items.data[self.id]["price"]
+end
+
+function ItemEntity:getDescribe()
+    return items.data[self.id]["describe"]
+end
+
 function ItemEntity:getQuality()
     return items.data[self.id]["quality"]
 end
