@@ -1,5 +1,9 @@
 local ItemCellUI = class("ItemCellUI", BaseUI)
 
+function BaseUI:ctor(itemID)
+    self.itemID = itemID
+end
+
 function ItemCellUI:getNode()
     return UIConst.UI_NODE.BAG
 end
@@ -9,14 +13,16 @@ function ItemCellUI:getResPath()
 end
 
 function ItemCellUI:onLoadComplete()
+    self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
+    self.number.text =  BagController:getPropNum(self.itemID)
     self.selfBtn = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.selfBtn.onClick:AddListener(self.selfBtnOnClick)
-    self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
-    self.number.text = " "
 end
 
 function ItemCellUI:onRefresh()
-    Logger.log("ItemCellUI  刷新")
+    if self.number then
+        self.number.text =  BagController:getPropNum(self.itemID)
+    end
 end
 
 function ItemCellUI:onClose()
@@ -28,7 +34,7 @@ function ItemCellUI:onCover()
 end
 
 function ItemCellUI:onReShow()
-    Logger.log("ItemCellUI  被重新打开 ")
+    Logger.log("ItemCellUI  被重新打开")
 end
 
 function ItemCellUI:onInitEvent()
@@ -40,7 +46,7 @@ function ItemCellUI:selfBtnOnClick()
 end
 
 function ItemCellUI:onClickEvent()
-    UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI)
+    UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, false, self.itemID)
 end
 
 return ItemCellUI

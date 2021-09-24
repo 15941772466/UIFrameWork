@@ -5,7 +5,11 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_controller.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_controller.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -74,7 +78,8 @@
       <workItem from="1632361061293" duration="83000" />
       <workItem from="1632361263751" duration="186000" />
       <workItem from="1632361465331" duration="767000" />
-      <workItem from="1632362250771" duration="8625000" />
+      <workItem from="1632362250771" duration="10974000" />
+      <workItem from="1632446749994" duration="7804000" />
     </task>
     <servers />
   </component>
@@ -114,7 +119,7 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2208" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631857527107" />
-    <state x="2410" y="299" width="1173" height="668" key="find.popup" timestamp="1632368895253">
+    <state x="2410" y="299" width="1173" height="668" key="find.popup" timestamp="1632378137355">
       <screen x="1792" y="25" width="1920" height="966" />
     </state>
     <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632290255212" />
@@ -123,7 +128,7 @@
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631699841587" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1015/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631688586081" />
     <state x="2182" y="257" width="1200" height="730" key="find.popup/0.25.1792.1019/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631677840386" />
-    <state x="2410" y="299" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632368895253" />
+    <state x="2410" y="299" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632378137355" />
     <state x="2566" y="239" width="816" height="671" key="find.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631605041671" />
     <state width="643" height="444" key="javadoc.popup" timestamp="1631601085852">
       <screen x="1792" y="25" width="1920" height="1055" />
@@ -131,9 +136,10 @@
     <state width="643" height="444" key="javadoc.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631601085852" />
     <state width="600" height="424" key="javadoc.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631344063150" />
     <state width="643" height="408" key="javadoc.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631528776256" />
-    <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup" timestamp="1631585558822">
+    <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup" timestamp="1632452756236">
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
+    <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632452756236" />
     <state x="2393" y="257" width="718" height="705" key="search.everywhere.popup/0.25.1792.1010/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631585558822" />
     <state x="561" y="247" width="670" height="674" key="search.everywhere.popup/0.25.1792.1010@0.25.1792.1010" timestamp="1631336983310" />
     <state x="561" y="248" width="670" height="676" key="search.everywhere.popup/0.25.1792.1013@0.25.1792.1013" timestamp="1631243240980" />

@@ -4,13 +4,17 @@ function BagController:getItems()
     return BagDataManager.bagPropNumberMap
 end
 
+function BagController:getItem(id)
+    return Config.data[id]
+end
+
 function BagController:getPropNum(id)
     return BagDataManager.bagPropNumberMap[id]
 end
 
 function BagController:useProp(id)
     if self:getPropNum(id) > 0 then
-        --减少数量
+        BagDataManager.bagPropNumberMap[id] = BagDataManager.bagPropNumberMap[id] - 1
     end
 end
 

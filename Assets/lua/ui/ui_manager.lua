@@ -18,9 +18,10 @@ function UIManager:loadGameObject(path, callback)
 end
 
 function UIManager:init()
-    self.uiList = {}    --存活的ui   value: uiObj
-    self.uiCacheList = {}   --缓存的ui  value: uiObj
-    self.uiTransformMap = {}  --uiTransform Map   key: "index"  value: uiTransform   用来排序
+    self.uiList = {}  --存活的ui   value: uiObj
+    self.uiCacheList = {}   --value: uiObj
+    self.uiTransformMap = {}  --key: "index"  value: uiTransform   用来排序
+    self.itemList = {}
     self:loadGameObject(UI_ROOT_PATH, function(gameObject)
         self.uiRoot = gameObject
         self.normal = self.uiRoot.transform:Find(UIConst.UI_NODE.NORMAL)
@@ -33,9 +34,17 @@ function UIManager:init()
     end)
 end
 
-function UIManager:openUI(uiType)
-    index = index + 1
+function UIManager:openUI(uiType, isItem, itemID)
     local uiObj
+    if isItem then
+        uiObj = require(uiType):create(itemID)
+        uiObj.uiType = uiType
+        uiObj:startLoad(index)
+        table.insert(self.itemList, uiObj)
+        return
+    end
+    index = index + 1
+
     uiObj = self:checkOpen(uiType)
     if uiObj then
         uiObj.index = index
@@ -46,10 +55,10 @@ function UIManager:openUI(uiType)
     if uiObj then
         uiObj.index = index
         table.insert(self.uiList, uiObj)
-        uiObj:show(index)
+        uiObj:show(index,itemID)
         return
     end
-    uiObj = require(uiType):create()
+    uiObj = require(uiType):create(itemID)
     uiObj.index = index
     uiObj.uiType = uiType
     table.insert(self.uiList, uiObj)

@@ -11,14 +11,15 @@ end
 function BagUI:onLoadComplete()
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn.onClick:AddListener(self.backBtnOnClick)
-    UIManager:openUI(UIConst.UI_TYPE.ITEM_CELL_UI)
     for i, v in pairs (BagController:getItems()) do
-
+        UIManager:openUI(UIConst.UI_TYPE.ITEM_CELL_UI, true, i)
     end
 end
 
 function BagUI:onRefresh()
-
+    for i, v in ipairs (UIManager.itemList) do
+        v:onRefresh()
+    end
 end
 
 function BagUI:onClose()
@@ -30,7 +31,9 @@ function BagUI:onCover()
 end
 
 function BagUI:onReShow()
-    Logger.log("BagUI  被重新打开 ")
+    for i, v in ipairs (UIManager.itemList) do
+        v:onRefresh()
+    end
 end
 
 function BagUI:onInitEvent()

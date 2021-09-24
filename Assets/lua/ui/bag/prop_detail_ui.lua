@@ -1,5 +1,9 @@
 local PropDetailUI = class("PropDetailUI", BaseUI)
 
+function BaseUI:ctor(itemID)
+    self.itemID = itemID
+end
+
 function PropDetailUI:getNode()
     return UIConst.UI_NODE.POPUP
 end
@@ -10,7 +14,7 @@ end
 
 function PropDetailUI:onLoadComplete()
     self.introduction = self.uiTransform:Find("introduction"):GetComponent(typeof(CS.UnityEngine.UI.Text))
-    self.introduction.text = "道具介绍："
+    self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.useBtn = self.uiTransform:Find("use"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.useBtn.onClick:AddListener(self.useBtnOnClick)
     self.sellBtn = self.uiTransform:Find("sell"):GetComponent(typeof(CS.UnityEngine.UI.Button))
@@ -19,8 +23,14 @@ function PropDetailUI:onLoadComplete()
     self.propBackBtn.onClick:AddListener(self.propBackBtnOnClick)
 end
 
-function PropDetailUI:onRefresh()
-    Logger.log("PropDetailUI  刷新 ")
+function PropDetailUI:onRefresh(itemID)
+    if itemID then
+        self.itemID = itemID
+    end
+    local item = BagController:getItem(self.itemID)
+    local number = BagController:getPropNum(self.itemID)
+    self.introduction.text = "道具介绍：\n\n".."    "..item["describe"]
+    self.number.text = "剩余数量："..number
 end
 
 function PropDetailUI:onClose()
@@ -46,7 +56,8 @@ function PropDetailUI:useBtnOnClick()
 end
 
 function PropDetailUI:propUseEvent()
-    --控制层
+    BagController:useProp(self.itemID)
+    self:onRefresh()
 end
 
 function PropDetailUI:sellBtnOnClick()
