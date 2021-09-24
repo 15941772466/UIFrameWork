@@ -16,7 +16,7 @@ function ItemCellUI:onLoadComplete()
     self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.number.text =  BagController:getPropNum(self.itemID)
     self.selfBtn = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.selfBtn.onClick:AddListener(self.selfBtnOnClick)
+    self.selfBtn.onClick:AddListener(function() self:selfBtnOnClick() end)
 end
 
 function ItemCellUI:onRefresh()
@@ -38,11 +38,11 @@ function ItemCellUI:onReShow()
 end
 
 function ItemCellUI:onInitEvent()
-    self:registerEvent(UIConst.EVENT_TYPE.ITEM_CLICK_EVENT, function() self:onClickEvent() end)
+    self:registerEvent(self.itemID, function() self:onClickEvent() end)
 end
 
 function ItemCellUI:selfBtnOnClick()
-    EventSystem:sendEvent(UIConst.EVENT_TYPE.ITEM_CLICK_EVENT)
+    EventSystem:sendEvent(self.itemID)
 end
 
 function ItemCellUI:onClickEvent()

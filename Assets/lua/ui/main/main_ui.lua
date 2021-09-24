@@ -9,6 +9,7 @@ function MainUI:getResPath()
 end
 
 function MainUI:onLoadComplete()
+    self.coins = self.uiTransform:Find("coins_num"):GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.bagBtn = self.uiTransform:Find("bag_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.bagBtn.onClick:AddListener(self.bagBtnOnClick)
@@ -16,7 +17,8 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
-    Logger.log("MainUI  刷新 ")
+    local coins = BagController:getCoinsNum()
+    self.coins.text = "金币： "..coins
 end
 
 function MainUI:onClose()
@@ -28,7 +30,7 @@ function MainUI:onCover()
 end
 
 function MainUI:onReShow()
-    Logger.log("MainUI  被重新打开 ")
+   self:onRefresh()
 end
 
 function MainUI:onInitEvent()

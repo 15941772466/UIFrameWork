@@ -1,20 +1,26 @@
 local item = {
     [1] = {
-        ["type"] = 1,
-        ["level"] = 1,
+        ["name"] = "1号",
+        ["price"] = 5,
         ["describe"] = "壹壹壹壹壹壹",
     },
 
     [2] = {
-        ["type"] = 2,
-        ["level"] = 2,
+        ["name"] = "2号",
+        ["price"] = 10,
         ["describe"] = "贰贰贰贰贰贰",
+    },
+
+    [3] = {
+        ["name"] = "3号",
+        ["price"] = 20,
+        ["describe"] = "叁叁叁叁叁叁",
     }
 }
 
 local config = {
     data = item,
-    count = 2
+    count = 3
 }
 
 return config

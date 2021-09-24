@@ -29,7 +29,7 @@ function PropDetailUI:onRefresh(itemID)
     end
     local item = BagController:getItem(self.itemID)
     local number = BagController:getPropNum(self.itemID)
-    self.introduction.text = "道具介绍：\n\n".."    "..item["describe"]
+    self.introduction.text = "道具介绍：\n\n"..item["name"]..":\n".."    "..item["describe"]
     self.number.text = "剩余数量："..number
 end
 
@@ -65,13 +65,14 @@ function PropDetailUI:sellBtnOnClick()
 end
 
 function PropDetailUI:propSellEvent()
-   --控制层
+    BagController:sellProp(self.itemID)
+    self:onRefresh()
 end
 
 function PropDetailUI:propBackBtnOnClick()
     EventSystem:sendEvent(UIConst.EVENT_TYPE.PROP_BACK_EVENT)
 end
---
+
 function PropDetailUI:propBackEvent()
    self:closeUI()
 end

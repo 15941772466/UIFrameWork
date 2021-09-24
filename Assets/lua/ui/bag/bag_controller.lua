@@ -1,5 +1,9 @@
 local BagController = {}
 
+function BagController:getCoinsNum()
+    return BagDataManager.coinsNum
+end
+
 function BagController:getItems()
     return BagDataManager.bagPropNumberMap
 end
@@ -18,10 +22,11 @@ function BagController:useProp(id)
     end
 end
 
-function BagController:sellProp()
+function BagController:sellProp(id)
     if self:getPropNum(id) > 0 then
-        --减少数量
+        BagDataManager.bagPropNumberMap[id] = BagDataManager.bagPropNumberMap[id] - 1
         --增加金币
+        BagDataManager.coinsNum = BagDataManager.coinsNum + Config.data[id]["price"]
     end
 end
 return BagController
