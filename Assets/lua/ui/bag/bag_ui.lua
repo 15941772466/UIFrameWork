@@ -1,6 +1,5 @@
 local BagUI = class("BagUI", BaseUI)
 
-
 function BagUI:getNode()
     return UIConst.UI_NODE.POPUP
 end
