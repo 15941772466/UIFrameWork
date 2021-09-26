@@ -1,26 +1,25 @@
 local BagManager = {}
 
-local BagData = require "data/bag_data"
-
-function BagManager:getBagDataList()
-    return BagData.bagDataList
+function BagManager:getBagItemList()
+    return DataManager.bagData.bagItemList
 end
 
 function BagManager:getItemsNum()
-    return BagData:getAllItemsNum()
+    return DataManager.bagData:getAllItemsNum()
 end
 
 function BagManager:getItem(id)
-    return BagData.bagDataMap[id]
+    return DataManager.bagData.bagItemMap[id]
 end
 
 function BagManager:getPropNum(id)
-    return BagData:getItemNum(id)
+    return DataManager.bagData:getItemNum(id)
 end
 
 function BagManager:useProp(id)
-    BagData:useItem(id)
+    DataManager.bagData:useItem(id)
 end
+
 --
 --function BagManager:sellProp(id)
 --    if self:getPropNum(id) > 0 then

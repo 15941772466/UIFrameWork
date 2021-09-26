@@ -1,43 +1,37 @@
-local ItemCellUI = class("ItemCellUI")
-
 local BagManager = require "module/bag/bag_manager"
+local BagConst = require "data/bag/bag_const"
+local ItemCell = class("ItemCell")
 
-function ItemCellUI:ctor(itemID)
+local BACK_BG = "Assets/res/common/box1.png"
+
+function ItemCell:ctor(itemID)
     self.itemID = itemID
 end
 
-function ItemCellUI:getNode()
+function ItemCell:getNode()
     return UIConst.UI_NODE.BAG
 end
 
-function ItemCellUI:getObjectResPath()
-    return "Assets/res/prefabs/item_cell_ui.prefab"
+function ItemCell:getObjectResPath()
+    return "Assets/res/prefabs/item_cell.prefab"
 end
 
-function ItemCellUI:getCellSpritePath()
+function ItemCell:getCellSpritePath()
     --补全的cell
     if not self.itemID then
-        return "Assets/res/common/box1.png"
+        return BACK_BG
     end
-
-    local spritePath
     local item = BagManager:getItem(self.itemID)
-    if item:getQuality() == 1 then
-        spritePath = "box1.png"
-    elseif item:getQuality() == 2 then
-        spritePath = "box2.png"
-    elseif item:getQuality() == 3 then
-        spritePath = "box3.png"
-    end
+    local spritePath = BagConst.QUALITY[item:getQuality()]
     return "Assets/res/common/"..spritePath
 end
 
-function ItemCellUI:getPropSpritePath()
+function ItemCell:getPropSpritePath()
     local item = BagManager:getItem(self.itemID)
-    return "Assets/res/item/"..item:getIcon()
+    return item:getIcon()
 end
 
-function ItemCellUI:startLoad()
+function ItemCell:startLoad()
     local itemObjectPath = self:getObjectResPath()
     local spritePath = self:getCellSpritePath()
     UIManager:loadGameObject(itemObjectPath, function(gameObject)
@@ -57,7 +51,7 @@ function ItemCellUI:startLoad()
     end)
 end
 
-function ItemCellUI:onLoadComplete()
+function ItemCell:onLoadComplete()
     --根据类型添加底板
     self.cellImage = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Image))
     self.cellImage.sprite = self.cellSprite
@@ -82,14 +76,14 @@ function ItemCellUI:onLoadComplete()
     end)
 end
 
-function ItemCellUI:onRefresh()
+function ItemCell:onRefresh()
     if self.number then
         self.number.text = BagManager:getPropNum(self.itemID)
     end
 end
 
-function ItemCellUI:selfBtnOnClick()
+function ItemCell:selfBtnOnClick()
     UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, self.itemID)
 end
 
-return ItemCellUI
+return ItemCell

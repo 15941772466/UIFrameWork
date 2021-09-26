@@ -1,6 +1,7 @@
+local BagManager = require "module/bag/bag_manager"
 local BagUI = class("BagUI", BaseUI)
 
-local BagManager = require "module/bag/bag_manager"
+local MIN_CELL_COUNT = 20
 
 function BagUI:getNode()
     return UIConst.UI_NODE.POPUP
@@ -12,56 +13,62 @@ end
 
 function BagUI:onLoadComplete()
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.backBtn.onClick:AddListener(self.backBtnOnClick)
+    self.backBtn.onClick:AddListener(function() self:backBtnOnClick() end)
     self.content = self.uiTransform:Find("bag/content"):GetComponent(typeof(CS.UnityEngine.RectTransform))
     self.content.sizeDelta = {x = 0, y = 5000}
-    BagUI.itemCellUIList = {}
-    BagUI.emptyCellUIList = {}
-    for _, v in pairs (BagManager:getBagDataList()) do
-        local itemCellUI = require("ui/bag/item_cell_ui"):create(v.id)
-        table.insert(self.itemCellUIList, itemCellUI)
-        itemCellUI:startLoad()
+    self.ItemCellList = {}
+    self.emptyCellUIList = {}
+    for _, v in pairs (DataManager.bagData.bagItemList) do
+        local ItemCell = require("ui/bag/item_cell"):create(v.id)
+        table.insert(self.ItemCellList, ItemCell)
+        ItemCell:startLoad()
     end
 end
 
 function BagUI:onRefresh()
-    for _, v in ipairs (self.itemCellUIList) do
+    for _, v in ipairs (self.ItemCellList) do
         v:onRefresh()
     end
-    local needCellNum = 4 - #BagManager:getBagDataList() % 4
-    if self.emptyCellUINum ~= needCellNum then
-        self.emptyCellUINum = needCellNum
-        for i = 1, needCellNum do
-            local emptyCellUI = require("ui/bag/item_cell_ui"):create()
+    local bagItemListCount = #DataManager.bagData.bagItemList
+    --补全背包格数
+    local needCellCount = 4 - bagItemListCount % 4
+    if self.emptyCellUICount ~= needCellCount then
+        self.emptyCellUICount = needCellCount
+        for i = 1, needCellCount do
+            local emptyCellUI = require("ui/bag/item_cell"):create()
+            table.insert(self.emptyCellUIList, emptyCellUI)
+            emptyCellUI:startLoad()
+        end
+    end
+    -- 不足最小背包格数时
+    local nowItemListCount = #self.emptyCellUIList + bagItemListCount
+    if nowItemListCount < MIN_CELL_COUNT then
+        for i = 1, MIN_CELL_COUNT - nowItemListCount do
+            local emptyCellUI = require("ui/bag/item_cell"):create()
             table.insert(self.emptyCellUIList, emptyCellUI)
             emptyCellUI:startLoad()
         end
     end
 end
 
-function BagUI:onClose()
-end
-
 function BagUI:onCover()
 end
 
 function BagUI:onReShow()
-    for _, v in ipairs (self.itemCellUIList) do
+    for _, v in ipairs (self.ItemCellList) do
         v:onRefresh()
     end
     self:onRefresh()
 end
 
 function BagUI:onInitEvent()
-    self:registerEvent(UIConst.EVENT_TYPE.BAG_BACK_EVENT, function() self:bagBackEvent() end)
 end
 
 function BagUI:backBtnOnClick()
-    EventSystem:sendEvent(UIConst.EVENT_TYPE.BAG_BACK_EVENT)
+    self:closeUI()
 end
 
-function BagUI:bagBackEvent()
-    self:closeUI()
+function BagUI:onClose()
 end
 
 return BagUI

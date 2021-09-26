@@ -2,21 +2,29 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/data/bag.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bag/bag_const.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bag/bag_const.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bag/bag_data.lua" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bag/bag_data.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/data/bag/item_entity.lua.meta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ui/bag/item_cell.lua.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/item.lua" beforeDir="false" afterPath="$PROJECT_DIR$/config/item.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bag_data.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/bag_data.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bag_data.lua" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bag_data.lua.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/data/data_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_manager.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/itemEntity.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/itemEntity.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.lua" beforeDir="false" afterPath="$PROJECT_DIR$/main.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/module/bag/bag_controller.lua.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/itemEntity.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/bag/item_entity.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/itemEntity.lua.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/module/bag/bag_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/module/bag/bag_manager.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item_cell.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item_cell_ui.lua.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login/login_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/main/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main/main_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/item_cell_ui.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../res/prefabs/item_cell_ui.prefab.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +103,7 @@
       <workItem from="1632361465331" duration="767000" />
       <workItem from="1632362250771" duration="10974000" />
       <workItem from="1632446749994" duration="23784000" />
-      <workItem from="1632559637048" duration="19987000" />
+      <workItem from="1632559637048" duration="28206000" />
     </task>
     <servers />
   </component>
@@ -140,7 +148,7 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2208" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631857527107" />
-    <state x="2410" y="299" width="1173" height="668" key="find.popup" timestamp="1632641966383">
+    <state x="2377" y="292" width="1173" height="668" key="find.popup" timestamp="1632652906090">
       <screen x="1792" y="25" width="1920" height="966" />
     </state>
     <state x="2209" y="258" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632475699027" />
@@ -149,7 +157,7 @@
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631699841587" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1015/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631688586081" />
     <state x="2182" y="257" width="1200" height="730" key="find.popup/0.25.1792.1019/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631677840386" />
-    <state x="2410" y="299" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632641966383" />
+    <state x="2377" y="292" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632652906090" />
     <state x="2566" y="239" width="816" height="671" key="find.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631605041671" />
     <state width="643" height="444" key="javadoc.popup" timestamp="1631601085852">
       <screen x="1792" y="25" width="1920" height="1055" />

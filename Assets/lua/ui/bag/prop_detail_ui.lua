@@ -17,11 +17,13 @@ function PropDetailUI:onLoadComplete()
     self.introduction = self.uiTransform:Find("introduction"):GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.number = self.uiTransform:Find("number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
     self.useBtn = self.uiTransform:Find("use"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.useBtn.onClick:AddListener(self.useBtnOnClick)
+    self.useBtn.onClick:AddListener(function() self:useBtnOnClick() end)
+
     self.sellBtn = self.uiTransform:Find("sell"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.sellBtn.onClick:AddListener(self.sellBtnOnClick)
+    self.sellBtn.onClick:AddListener(function() self:sellBtnOnClick() end)
+
     self.propBackBtn = self.uiTransform:Find("back"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.propBackBtn.onClick:AddListener(self.propBackBtnOnClick)
+    self.propBackBtn.onClick:AddListener(function() self:propBackOnClick() end)
 end
 
 function PropDetailUI:onRefresh(itemID)
@@ -29,10 +31,6 @@ function PropDetailUI:onRefresh(itemID)
     local item = BagManager:getItem(self.itemID)
     self.introduction.text = "道具介绍：\n\n"..item:getName()..":\n".."    "..item:getDescribe()
     self.number.text = "剩余数量："..item:getNum()
-end
-
-function PropDetailUI:onClose()
-
 end
 
 function PropDetailUI:onCover()
@@ -44,35 +42,23 @@ function PropDetailUI:onReShow()
 end
 
 function PropDetailUI:onInitEvent()
-    self:registerEvent(UIConst.EVENT_TYPE.PROP_USE_EVENT, function() self:propUseEvent() end)
-    self:registerEvent(UIConst.EVENT_TYPE.PROP_SELL_EVENT, function() self:propSellEvent() end)
-    self:registerEvent(UIConst.EVENT_TYPE.PROP_BACK_EVENT, function() self:propBackEvent() end)
 end
 
 function PropDetailUI:useBtnOnClick()
-    EventSystem:sendEvent(UIConst.EVENT_TYPE.PROP_USE_EVENT)
-end
-
-function PropDetailUI:propUseEvent()
     BagManager:useProp(self.itemID)
     self:onRefresh(self.itemID)
 end
 
 function PropDetailUI:sellBtnOnClick()
-    EventSystem:sendEvent(UIConst.EVENT_TYPE.PROP_SELL_EVENT)
-end
-
-function PropDetailUI:propSellEvent()
     BagManager:sellProp(self.itemID)
     self:onRefresh()
 end
 
-function PropDetailUI:propBackBtnOnClick()
-    EventSystem:sendEvent(UIConst.EVENT_TYPE.PROP_BACK_EVENT)
+function PropDetailUI:propBackOnClick()
+    self:closeUI()
 end
 
-function PropDetailUI:propBackEvent()
-   self:closeUI()
+function PropDetailUI:onClose()
 end
 
 return PropDetailUI

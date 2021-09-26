@@ -10,8 +10,8 @@ function DataManager:init()
         [3] = 15
     }
     self.data.coinsNum = 100
-    local bagData = require("data/bag_data"):create()
-    bagData:init(self.data.bag)
+    self.bagData = require("data/bag/bag_data"):create()
+    self.bagData:init(self.data.bag)
 end
 
 function DataManager:getCoinsNum()

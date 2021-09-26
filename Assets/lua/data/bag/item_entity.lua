@@ -1,5 +1,5 @@
-local ItemEntity = class("ItemEntity")
 local items = require "config/item"
+local ItemEntity = class("ItemEntity")
 
 function ItemEntity:ctor(id, num)
     self.id = id
@@ -31,7 +31,7 @@ function ItemEntity:getQuality()
 end
 
 function ItemEntity:getIcon()
-    return items.data[self.id]["icon"]
+    return "Assets/res/item/"..items.data[self.id]["icon"]
 end
 
 return ItemEntity
