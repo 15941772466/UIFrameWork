@@ -23,6 +23,6 @@ UIConst.UI_NODE = {
      NORMAL = "normal",
      MASK = "normal/mask",
      POPUP = "popup",
-     BAG = "normal/bag_ui(Clone)/bag/grid"
+     BAG = "normal/bag_ui(Clone)/bag/content"
 }
 return UIConst

@@ -4,6 +4,7 @@ using UnityEngine;
 using System;
 using System.IO;
 using XLua;
+using UnityEngine.UI;
 
 namespace DH
 {

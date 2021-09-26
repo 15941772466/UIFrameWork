@@ -1,5 +1,7 @@
 local UIManager = {}
 local TypeOfGameObject = typeof(CS.UnityEngine.GameObject)
+local TypeOfSprite = typeof(CS.UnityEngine.Sprite)
+
 local UI_ROOT_PATH = "Assets/res/prefabs/ui_root.prefab"
 local UI_CACHE_MAX = 4
 local index = 0
@@ -17,11 +19,17 @@ function UIManager:loadGameObject(path, callback)
     end)
 end
 
+---- 加载sprite
+function UIManager:loadSprite(path, callback)
+    self:loadAsset(path, TypeOfSprite, function(asset)
+        callback(asset)
+    end)
+end
+
 function UIManager:init()
     self.uiList = {}  --存活的ui   value: uiObj
     self.uiCacheList = {}   --value: uiObj
     self.uiTransformMap = {}  --key: "index"  value: uiTransform   用来排序
-    self.itemList = {}
     self:loadGameObject(UI_ROOT_PATH, function(gameObject)
         self.uiRoot = gameObject
         self.normal = self.uiRoot.transform:Find(UIConst.UI_NODE.NORMAL)
@@ -48,14 +56,14 @@ function UIManager:openUI(uiType, itemID)
     if uiObj then
         uiObj.index = index
         table.insert(self.uiList, uiObj)
-        uiObj:show(index,itemID)
+        uiObj:show(index, itemID)
         return
     end
-    uiObj = require(uiType):create(itemID)
+    uiObj = require(uiType):create()
     uiObj.index = index
     uiObj.uiType = uiType
     table.insert(self.uiList, uiObj)
-    uiObj:startLoad(index)
+    uiObj:startLoad(index, itemID)
 end
 
 function UIManager:getFromCacheList(uiType)

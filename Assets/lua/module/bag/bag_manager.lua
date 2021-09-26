@@ -13,26 +13,14 @@ end
 function BagManager:getItem(id)
     return BagData.bagDataMap[id]
 end
---function BagManager:getCoinsNum()
---    return BagDataManager.coinsNum
---end
---
---function BagManager:getItems()
---    return BagDataManager.bagPropNumberMap
---end
---
 
---
---function BagManager:getPropNum(id)
---    return BagDataManager.bagPropNumberMap[id]
---end
---
---function BagManager:useProp(id)
---    DataManager:useItem(id)
---    --if self:getPropNum(id) > 0 then
---    --    BagDataManager.bagPropNumberMap[id] = BagDataManager.bagPropNumberMap[id] - 1
---    --end
---end
+function BagManager:getPropNum(id)
+    return BagData:getItemNum(id)
+end
+
+function BagManager:useProp(id)
+    BagData:useItem(id)
+end
 --
 --function BagManager:sellProp(id)
 --    if self:getPropNum(id) > 0 then

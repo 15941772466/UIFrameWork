@@ -6,7 +6,7 @@ function BaseUI:getResPath() end
 
 function BaseUI:onLoadComplete() end
 
-function BaseUI:onRefresh() end
+function BaseUI:onRefresh(...) end
 
 function BaseUI:onClose() end
 
@@ -56,21 +56,16 @@ function BaseUI:removeAllEvents()
     end
 end
 
-function BaseUI:startLoad(index)
+function BaseUI:startLoad(index, itemID)
     local path = self:getResPath()
     UIManager:loadGameObject(path, function(gameObject)
+        self.itemID = itemID
         self.eventMap = {}
         self.eventTypeList = {}
         self.gameObject = gameObject
         self.uiNode = self:getNode()
-        if self.uiNode == UIConst.UI_NODE.BAG then
-            if not UIManager.bagNode then
-                UIManager.bagNode = UIManager.uiRoot.transform:Find(UIConst.UI_NODE.BAG)
-            end
-            self.gameObject.transform:SetParent(UIManager.bagNode.transform, false)
-        else
-            self.gameObject.transform:SetParent(UIManager.normal.transform, false)
-        end
+        self.gameObject.transform:SetParent(UIManager.normal.transform, false)
+
         if self.uiNode == UIConst.UI_NODE.POPUP then
             UIManager.mask.gameObject:SetActive(true)
             UIManager.uiTransformMap[index] = UIManager.mask
@@ -88,20 +83,21 @@ function BaseUI:startLoad(index)
             return
         end
         self:onInitEvent()
-        self:onRefresh()
+        self:onRefresh(self.itemID)
         if self.covered then
             self:onCover()
         end
     end)
 end
 
-function BaseUI:show(index)
+function BaseUI:show(index, itemID)
     if self:getNode() == UIConst.UI_NODE.POPUP then
         UIManager.mask.gameObject:SetActive(true)
         UIManager.uiTransformMap[index] = UIManager.mask
         self:setUIOrder(index)
         index = index + 1
     end
+    self.itemID = itemID
     UIManager.uiTransformMap[self.index] = nil
     self.index = index
     UIManager.uiTransformMap[index] = self.uiTransform
@@ -109,7 +105,7 @@ function BaseUI:show(index)
     if not self.gameObject.activeSelf then
         self.uiTransform.gameObject:SetActive(true)
         self:onInitEvent()
-        self:onRefresh()
+        self:onRefresh(self.itemID)
     end
     self:topUIOnCover()
 end

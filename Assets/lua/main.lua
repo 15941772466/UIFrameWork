@@ -101,3 +101,4 @@ class = function(className, super)
 end
 
 Main:init()
+DataManager:init()

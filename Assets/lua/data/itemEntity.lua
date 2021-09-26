@@ -30,4 +30,8 @@ function ItemEntity:getQuality()
     return items.data[self.id]["quality"]
 end
 
+function ItemEntity:getIcon()
+    return items.data[self.id]["icon"]
+end
+
 return ItemEntity

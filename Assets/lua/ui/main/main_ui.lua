@@ -1,5 +1,7 @@
 local MainUI = class("BagUI", BaseUI)
 
+local BagManager = require("module/bag/bag_manager")
+
 function MainUI:getNode()
     return UIConst.UI_NODE.NORMAL
 end
@@ -17,7 +19,7 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
-    local coins = BagManager:getCoinsNum()
+    local coins = DataManager:getCoinsNum()
     self.coins.text = "金币： "..coins
 end
 

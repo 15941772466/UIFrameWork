@@ -1,12 +1,12 @@
-local BagData = {}
+local BagData = class("BagData")
 
-function BagData:init(dataList)
+function BagData:init(dataMap)
     BagData.bagDataList = {}
     BagData.bagDataMap = {}
-    for _, v in ipairs(dataList) do
-        local item = require("data/itemEntity"):create(v.id,v.num)
+    for i, v in pairs(dataMap) do
+        local item = require("data/itemEntity"):create(i, v)
         table.insert(self.bagDataList, item)
-        self.bagDataMap[v.id] = v
+        self.bagDataMap[i] = item
     end
 end
 
@@ -15,7 +15,7 @@ function BagData:addItem(id, num)
 end
 
 function BagData:useItem(id)
-
+    self.bagDataMap[id].num = self.bagDataMap[id].num - 1
 end
 
 function BagData:removeItem(id)

@@ -2,8 +2,7 @@ local PropDetailUI = class("PropDetailUI", BaseUI)
 
 local BagManager = require "module/bag/bag_manager"
 
-function BaseUI:ctor(itemID)
-    self.itemID = itemID
+function PropDetailUI:ctor()
 end
 
 function PropDetailUI:getNode()
@@ -26,24 +25,22 @@ function PropDetailUI:onLoadComplete()
 end
 
 function PropDetailUI:onRefresh(itemID)
-    if itemID then
-        self.itemID = itemID
-    end
+    self.itemID = itemID
     local item = BagManager:getItem(self.itemID)
     self.introduction.text = "道具介绍：\n\n"..item:getName()..":\n".."    "..item:getDescribe()
     self.number.text = "剩余数量："..item:getNum()
 end
 
 function PropDetailUI:onClose()
-    Logger.log("PropDetailUI  关闭 ")
+
 end
 
 function PropDetailUI:onCover()
-    Logger.log("PropDetailUI  被覆盖 ")
+
 end
 
 function PropDetailUI:onReShow()
-    Logger.log("PropDetailUI  被重新打开 ")
+
 end
 
 function PropDetailUI:onInitEvent()
@@ -58,7 +55,7 @@ end
 
 function PropDetailUI:propUseEvent()
     BagManager:useProp(self.itemID)
-    self:onRefresh()
+    self:onRefresh(self.itemID)
 end
 
 function PropDetailUI:sellBtnOnClick()
