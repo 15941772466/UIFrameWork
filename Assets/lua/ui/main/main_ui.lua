@@ -19,12 +19,12 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
-    local coins = DataManager:getCoinsNum()
+    local coins = DataManager.data.coinsNum
     self.coins.text = "金币： "..coins
 end
 
 function MainUI:onCover()
-    Logger.log("MainUI  被覆盖 ")
+
 end
 
 function MainUI:onReShow()

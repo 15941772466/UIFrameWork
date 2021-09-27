@@ -31,18 +31,24 @@ function ItemCell:getPropSpritePath()
     return item:getIcon()
 end
 
-function ItemCell:startLoad()
+function ItemCell:startLoad(index)
     local itemObjectPath = self:getObjectResPath()
     local spritePath = self:getCellSpritePath()
     UIManager:loadGameObject(itemObjectPath, function(gameObject)
         self.gameObject = gameObject
+        if self.deleted then
+            self:delete()
+            return
+        end
+        self.index = index
         self.uiNode = self:getNode()
         if not UIManager.bagNode then
             UIManager.bagNode = UIManager.uiRoot.transform:Find(UIConst.UI_NODE.BAG)
         end
         self.gameObject.transform:SetParent(UIManager.bagNode.transform, false)
         self.uiTransform = gameObject.transform
-        --BagManager.uiTransformMap[index] = gameObject.transform
+        BagManager.cellTransformMap[index-1] = gameObject.transform
+        self:setUIOrder(index-1)
         UIManager:loadSprite(spritePath, function(sprite)
             self.cellSprite = sprite
             self:onLoadComplete()
@@ -76,10 +82,22 @@ function ItemCell:onLoadComplete()
     end)
 end
 
+function ItemCell:setUIOrder(index)
+    for i, v in pairs (BagManager.cellTransformMap) do
+        if i >= index then
+            v:SetSiblingIndex(i)
+        end
+    end
+end
+
 function ItemCell:onRefresh()
     if self.number then
         self.number.text = BagManager:getPropNum(self.itemID)
     end
+end
+
+function ItemCell:delete()
+    CS.UnityEngine.GameObject.Destroy(self.gameObject)
 end
 
 function ItemCell:selfBtnOnClick()

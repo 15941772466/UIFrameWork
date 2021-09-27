@@ -3,6 +3,7 @@ local BagData = class("BagData")
 function BagData:init(dataMap)
     self.bagItemList = {}
     self.bagItemMap = {}
+    self.cellTransformMap = {}
     for i, v in pairs(dataMap) do
         local item = require("data/bag/item_entity"):create(i, v)
         table.insert(self.bagItemList, item)

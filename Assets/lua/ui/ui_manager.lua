@@ -98,7 +98,7 @@ function UIManager:closeUI(uiObj)
             else
                 v:delete()
             end
-            if uiObj.uiTransform then
+            if uiObj.uiTransform then       --好像不用判断
                 table.remove(self.uiList, i)
             end
             break
