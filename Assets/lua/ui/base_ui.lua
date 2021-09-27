@@ -134,6 +134,7 @@ end
 
 function BaseUI:delete()
     self.closed = true
+    self.deleted = true
     if self.uiTransform then
         self:removeAllEvents()
         self:onClose()

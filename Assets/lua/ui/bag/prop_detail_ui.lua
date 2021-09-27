@@ -37,11 +37,9 @@ function PropDetailUI:onRefresh(itemID)
 end
 
 function PropDetailUI:onCover()
-
 end
 
 function PropDetailUI:onReShow()
-
 end
 
 function PropDetailUI:onInitEvent()
@@ -54,7 +52,7 @@ end
 
 function PropDetailUI:sellBtnOnClick()
     BagManager:sellProp(self.itemID)
-    self:onRefresh()
+    self:onRefresh(self.itemID)
 end
 
 function PropDetailUI:propBackOnClick()

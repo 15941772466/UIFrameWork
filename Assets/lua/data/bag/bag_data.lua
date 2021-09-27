@@ -20,7 +20,11 @@ function BagData:useItem(id)
 end
 
 function BagData:removeItem(id)
-
+    for i, v in ipairs (self.bagItemList) do
+        if v.id == id then
+            table.remove(self.bagItemList, i)
+        end
+    end
 end
 
 function BagData:getItemNum(id)

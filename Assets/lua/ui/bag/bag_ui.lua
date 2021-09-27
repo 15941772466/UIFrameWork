@@ -14,10 +14,17 @@ end
 
 function BagUI:onLoadComplete()
     BagManager:init()
+    --测试：添加背包道具按钮
+    self.propOneBtn = self.uiTransform:Find("prop_one"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.propOneBtn.onClick:AddListener(function() self:propOneBtnOnClick() end)
+    self.propTwoBtn = self.uiTransform:Find("prop_two"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.propTwoBtn.onClick:AddListener(function() self:propTwoBtnOnClick() end)
+    self.propThreeBtn = self.uiTransform:Find("prop_three"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.propThreeBtn.onClick:AddListener(function() self:propThreeBtnOnClick() end)
+
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn.onClick:AddListener(function() self:backBtnOnClick() end)
     self.content = self.uiTransform:Find("bag/content"):GetComponent(typeof(CS.UnityEngine.RectTransform))
-    self.content.sizeDelta = {x = 0, y = 5000}
     self.ItemCellList = {}
     self.emptyCellUIList = {}
     self.emptyIndex = 5000
@@ -32,6 +39,7 @@ function BagUI:onRefresh()
     for _, v in ipairs (self.ItemCellList) do
         v:onRefresh()
     end
+
     local bagItemListCount = #DataManager.bagData.bagItemList
     local nowItemListCount = #self.emptyCellUIList + bagItemListCount
 
@@ -75,6 +83,8 @@ function BagUI:onRefresh()
             end
         end
     end
+    local height =  (105 + 30) * (#self.emptyCellUIList + bagItemListCount)/4
+    self.content.sizeDelta = {x = 0, y = height}
 end
 
 function BagUI:delEmptyCell(i)
@@ -101,6 +111,18 @@ end
 
 function BagUI:backBtnOnClick()
     self:closeUI()
+end
+
+function BagUI:propOneBtnOnClick()
+
+end
+
+function BagUI:propTwoBtnOnClick()
+
+end
+
+function BagUI:propThreeBtnOnClick()
+
 end
 
 function BagUI:onClose()
