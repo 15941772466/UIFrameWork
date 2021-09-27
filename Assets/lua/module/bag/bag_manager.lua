@@ -4,14 +4,6 @@ function BagManager:init()
     self.cellTransformMap = {}
 end
 
-function BagManager:getBagItemList()
-    return DataManager.bagData.bagItemList
-end
-
-function BagManager:getItemsNum()
-    return DataManager.bagData:getAllItemsNum()
-end
-
 function BagManager:getItem(id)
     return DataManager.bagData.bagItemMap[id]
 end

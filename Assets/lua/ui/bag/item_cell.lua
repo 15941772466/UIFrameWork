@@ -36,20 +36,28 @@ function ItemCell:startLoad(index)
     local spritePath = self:getCellSpritePath()
     UIManager:loadGameObject(itemObjectPath, function(gameObject)
         self.gameObject = gameObject
+        --加载gameObject过程中 被关闭
         if self.deleted then
             self:delete()
             return
         end
         self.index = index
-        self.uiNode = self:getNode()
         if not UIManager.bagNode then
             UIManager.bagNode = UIManager.uiRoot.transform:Find(UIConst.UI_NODE.BAG)
+            --说明背包关闭
+            if not UIManager.bagNode then
+                return
+            end
         end
         self.gameObject.transform:SetParent(UIManager.bagNode.transform, false)
         self.uiTransform = gameObject.transform
         BagManager.cellTransformMap[index-1] = gameObject.transform
         self:setUIOrder(index-1)
         UIManager:loadSprite(spritePath, function(sprite)
+            --加载cellSprite过程中 被关闭
+            if self.deleted then
+                return
+            end
             self.cellSprite = sprite
             self:onLoadComplete()
             self:onRefresh()
@@ -62,6 +70,10 @@ function ItemCell:onLoadComplete()
     self.cellImage = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Image))
     self.cellImage.sprite = self.cellSprite
     self.prop = self.uiTransform:Find("prop")
+    --说明该道具被摧毁
+    if not self.prop then
+        return
+    end
     --补全的cell
     if not self.itemID then
         self.prop.gameObject:SetActive(false)
@@ -69,13 +81,16 @@ function ItemCell:onLoadComplete()
     end
     local propSpritePath = self:getPropSpritePath()
     UIManager:loadSprite(propSpritePath, function(sprite)
+        --加载propSprite过程中 被关闭
+        if self.deleted then
+            return
+        end
         self.propSprite = sprite
         --添加图标
         self.propImage = self.prop:GetComponent(typeof(CS.UnityEngine.UI.Image))
         self.propImage.sprite = self.propSprite
-
         self.number = self.uiTransform:Find("prop/number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
-        self.number.text = BagManager:getPropNum(self.itemID)
+        self.number.text = DataManager.bagData:getItemNum(self.itemID)
         self.selfBtn = self.prop:GetComponent(typeof(CS.UnityEngine.UI.Button))
         self.selfBtn.onClick:AddListener(function() self:selfBtnOnClick() end)
         self:onRefresh()
@@ -92,7 +107,7 @@ end
 
 function ItemCell:onRefresh()
     if self.number then
-        self.number.text = BagManager:getPropNum(self.itemID)
+        self.number.text = DataManager.bagData:getItemNum(self.itemID)
     end
 end
 

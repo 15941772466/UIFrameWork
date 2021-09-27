@@ -2,6 +2,7 @@ local BagManager = require "module/bag/bag_manager"
 local BagUI = class("BagUI", BaseUI)
 
 local MIN_CELL_COUNT = 20
+local ROW_ITEM_MAX_COUNT = 4
 
 function BagUI:getNode()
     return UIConst.UI_NODE.POPUP
@@ -31,7 +32,6 @@ function BagUI:onRefresh()
     for _, v in ipairs (self.ItemCellList) do
         v:onRefresh()
     end
-
     local bagItemListCount = #DataManager.bagData.bagItemList
     local nowItemListCount = #self.emptyCellUIList + bagItemListCount
 
@@ -45,11 +45,7 @@ function BagUI:onRefresh()
             end
         elseif nowItemListCount > MIN_CELL_COUNT then
             for i = #self.emptyCellUIList, 1 ,-1 do
-                if self.emptyCellUIList[i].index then
-                    CS.UnityEngine.GameObject.Destroy(BagManager.cellTransformMap[self.emptyCellUIList[i].index - 1].gameObject)
-                else
-                    self.emptyCellUIList[i].deleted = true
-                end
+                self:delEmptyCell(i)
                 BagManager.cellTransformMap[self.emptyCellUIList[i].index - 1] = nil
                 table.remove(self.emptyCellUIList, i)
                 if #self.emptyCellUIList + bagItemListCount - MIN_CELL_COUNT == 0 then
@@ -58,10 +54,11 @@ function BagUI:onRefresh()
             end
         end
     else
-        local needCellCount = 4 - nowItemListCount % 4
-        Logger.log(needCellCount)
-        if needCellCount == 4 then
-            if #self.emptyCellUIList ~= 0 then   --重新刷新时跳过补全 以及 限制补一行
+        local needCellCount = ROW_ITEM_MAX_COUNT - nowItemListCount % ROW_ITEM_MAX_COUNT
+        --需要补一整行时
+        if needCellCount == ROW_ITEM_MAX_COUNT then
+            --数据不变、再次刷新时跳过补全
+            if #self.emptyCellUIList ~= 0 then
                 return
             end
         end
@@ -71,16 +68,21 @@ function BagUI:onRefresh()
             table.insert(self.emptyCellUIList, emptyCellUI)
             emptyCellUI:startLoad(self.emptyIndex)
         end
-        if #self.emptyCellUIList > 4 then
-            for i = 4, 1 ,-1 do
-                if self.emptyCellUIList[i].index then
-                    CS.UnityEngine.GameObject.Destroy(BagManager.cellTransformMap[self.emptyCellUIList[i].index - 1].gameObject)
-                else
-                    self.emptyCellUIList[i].deleted = true
-                end
+        if #self.emptyCellUIList > ROW_ITEM_MAX_COUNT then
+            for i = ROW_ITEM_MAX_COUNT, 1 ,-1 do
+                self:delEmptyCell(i)
                 table.remove(self.emptyCellUIList, i)
             end
         end
+    end
+end
+
+function BagUI:delEmptyCell(i)
+    --删除多余空白cell（已加载完毕 or 正在加载中）
+    if self.emptyCellUIList[i].index then
+        CS.UnityEngine.GameObject.Destroy(BagManager.cellTransformMap[self.emptyCellUIList[i].index - 1].gameObject)
+    else
+        self.emptyCellUIList[i].deleted = true
     end
 end
 
@@ -103,8 +105,6 @@ end
 
 function BagUI:onClose()
 end
-
-
 
 return BagUI
 
