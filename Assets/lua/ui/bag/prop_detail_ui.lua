@@ -29,10 +29,10 @@ end
 function PropDetailUI:onRefresh(itemID)
     self.itemID = itemID
     local item = BagManager:getItem(self.itemID)
-    self.introduction.text = "道具介绍：\n\n"..item:getName()..":\n".."    "..item:getDescribe()
     if item:getNum() == 0 then
         self:closeUI()
     end
+    self.introduction.text = "道具介绍：\n\n"..item:getName()..":\n".."    "..item:getDescribe()
     self.number.text = "剩余数量："..item:getNum()
 end
 

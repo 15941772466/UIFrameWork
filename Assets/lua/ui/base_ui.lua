@@ -114,6 +114,11 @@ function BaseUI:setUIOrder(index)
     for i, v in pairs (UIManager.uiTransformMap) do
         if i >= index then
             v:SetSiblingIndex(i)
+            for  i2, v2 in pairs (UIManager.uiTransformMap) do
+                if i < i2 then
+                    v2:SetSiblingIndex(i2)
+                end
+            end
         end
     end
 end

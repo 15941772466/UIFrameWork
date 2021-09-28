@@ -198,6 +198,22 @@ local item = {
         ["price"] = 50,
         ["describe"] = "肆肆肆肆肆肆肆",
         ["icon"] = "item_1036.png"
+    },
+
+    [26] = {
+        ["name"] = "26号",
+        ["quality"] = 3,
+        ["price"] = 50,
+        ["describe"] = "肆肆肆肆肆肆肆",
+        ["icon"] = "item_700001.png"
+    },
+
+    [50] = {
+        ["name"] = "50号",
+        ["quality"] = 3,
+        ["price"] = 50,
+        ["describe"] = "肆肆肆肆肆肆肆",
+        ["icon"] = "item_700003.png"
     }
 }
 
