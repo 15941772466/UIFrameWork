@@ -23,7 +23,7 @@ function BagData:init(dataMap)
     end
 end
 
-function BagData:addItem(id, num, type)
+function BagData:addItem(id, num)
     DataManager.data.bag[id] = num
     local item = require("data/bag/item_entity"):create(id, num)
     self:differDataByType(id, item)

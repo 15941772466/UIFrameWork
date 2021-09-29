@@ -3,7 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/data_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/data_manager.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/bag/bag_data.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/bag/bag_data.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -86,7 +86,7 @@
       <workItem from="1632559637048" duration="49645000" />
       <workItem from="1632733803926" duration="3682000" />
       <workItem from="1632792706631" duration="24296000" />
-      <workItem from="1632879487152" duration="10469000" />
+      <workItem from="1632879487152" duration="10665000" />
     </task>
     <servers />
   </component>

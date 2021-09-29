@@ -16,12 +16,6 @@ function BagUI:getResPath()
 end
 
 function BagUI:onLoadComplete(type)
-    --测试：添加背包道具按钮
-    self.propOneBtn = self.uiTransform:Find("prop_one"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.propOneBtn.onClick:AddListener(function() self:propOneBtnOnClick() end)
-    self.propTwoBtn = self.uiTransform:Find("prop_two"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.propTwoBtn.onClick:AddListener(function() self:propTwoBtnOnClick() end)
-
     self.allCellsList = {}
     self.itemCellList = {}
     self.emptyCellUIList = {}
@@ -182,40 +176,6 @@ end
 
 function BagUI:backBtnOnClick()
     self:closeUI()
-end
-
-function BagUI:propOneBtnOnClick()
-    local propOne = DataManager.bagData.bagItemDataMap[50]
-    if propOne and propOne.num > 0 then
-        propOne.num  = propOne.num + 1
-        DataManager.data.bag[50] = propOne.num
-    else
-        DataManager.data.bag[50] = 1
-        local item = require("data/bag/item_entity"):create(50, 1)
-        table.insert(DataManager.bagData.bagItemDataList, item)
-        DataManager.bagData.bagItemDataMap[50] = item
-        local ItemCell = require("ui/bag/item_cell"):create(50, self)
-        table.insert(self.itemCellList, ItemCell)
-        ItemCell:startLoad(50)
-    end
-    self:onRefresh()
-end
-
-function BagUI:propTwoBtnOnClick()
-    local propOne = DataManager.bagData.bagItemDataMap[26]
-    if propOne and propOne.num > 0 then
-        propOne.num  = propOne.num + 1
-        DataManager.data.bag[26] = propOne.num
-    else
-        DataManager.data.bag[26] = 1
-        local item = require("data/bag/item_entity"):create(26, 1)
-        table.insert(DataManager.bagData.bagItemDataList, item)
-        DataManager.bagData.bagItemDataMap[26] = item
-        local ItemCell = require("ui/bag/item_cell"):create(26, self)
-        table.insert(self.itemCellList, ItemCell)
-        ItemCell:startLoad(26)
-    end
-    self:onRefresh()
 end
 
 function BagUI:equipmentBtnOnClick()
