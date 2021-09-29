@@ -61,7 +61,7 @@ function BagUI:onRefresh(itemID, type)
             end
         elseif self.nowItemListCount > MIN_CELL_COUNT then
             for i = #self.emptyCellUIList, 1 ,-1 do
-                self:delEmptyCell(i)
+                self:delEmptyCell(1)
                 if #self.emptyCellUIList + self.bagItemListCount - MIN_CELL_COUNT == 0 then
                     self:refreshContentSize()
                     return
@@ -97,19 +97,27 @@ function BagUI:addEmptyCell()
     emptyCellUI:startLoad(self.emptyIndex)
 end
 
-function BagUI:delEmptyCell(i)
+function BagUI:delEmptyCell(pos)
     --删除多余空白cell（已加载完毕 or 正在加载中）
-    if self.emptyCellUIList[i].index then
-    else
-        self.emptyCellUIList[i].deleted = true
-    end
-    table.remove(self.emptyCellUIList, i)
-    for i, v in ipairs (self.allCellsList) do
-        if v == self.emptyCellUIList[i] then
-            CS.UnityEngine.GameObject.Destroy(v.gameObject)
-            table.remove(self.allCellsList, i)
+    if self.emptyCellUIList[pos].index then
+        for i, v in ipairs (self.emptyCellUIList) do
+            if v == self.emptyCellUIList[i] then
+                CS.UnityEngine.GameObject.Destroy(v.gameObject)
+                break
+            end
         end
+        for i, v in ipairs (self.allCellsList) do
+            if v.index == self.emptyCellUIList[pos].index then
+                CS.UnityEngine.GameObject.Destroy(v.gameObject)
+                table.remove(self.allCellsList, i)
+                break
+            end
+        end
+    else
+        self.emptyCellUIList[pos].deleted = true
     end
+    table.remove(self.emptyCellUIList, pos)
+
 end
 
 function BagUI:delCellTransform(id)
