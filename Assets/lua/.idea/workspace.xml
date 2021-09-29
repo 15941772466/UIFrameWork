@@ -3,8 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/common/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/common/event_system.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/data/bag/bag_data.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/bag/bag_data.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,8 +135,8 @@
       <screen x="1792" y="25" width="1920" height="1055" />
     </state>
     <state x="2208" y="102" key="com.intellij.openapi.editor.actions.MultiplePasteAction$ClipboardContentChooser/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631857527107" />
-    <state x="2389" y="259" width="1173" height="729" key="find.popup" timestamp="1632895529262">
-      <screen x="1792" y="25" width="1920" height="1055" />
+    <state x="2377" y="292" width="1173" height="668" key="find.popup" timestamp="1632896406058">
+      <screen x="1792" y="25" width="1920" height="966" />
     </state>
     <state x="2389" y="259" width="1173" height="729" key="find.popup/0.25.1792.1006/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632895529262" />
     <state x="2733" y="233" width="816" height="730" key="find.popup/0.25.1792.1008/1792.25.1920.1055@1792.25.1920.1055" timestamp="1632732714417" />
@@ -140,7 +144,7 @@
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1013/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631699841587" />
     <state x="2566" y="258" width="816" height="730" key="find.popup/0.25.1792.1015/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631688586081" />
     <state x="2182" y="257" width="1200" height="730" key="find.popup/0.25.1792.1019/1792.25.1920.1055@1792.25.1920.1055" timestamp="1631677840386" />
-    <state x="2377" y="292" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632652906090" />
+    <state x="2377" y="292" width="1173" height="668" key="find.popup/0.25.1792.1095/1792.25.1920.966@1792.25.1920.966" timestamp="1632896406058" />
     <state x="2566" y="239" width="816" height="671" key="find.popup/0.25.1792.1095/1792.25.1920.970@1792.25.1920.970" timestamp="1631605041671" />
     <state width="643" height="444" key="javadoc.popup" timestamp="1631601085852">
       <screen x="1792" y="25" width="1920" height="1055" />

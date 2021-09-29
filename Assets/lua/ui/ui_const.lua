@@ -9,13 +9,7 @@ UIConst.UI_TYPE = {
 
 UIConst.EVENT_TYPE = {
      BAG_DEL_CELL_EVENT = "bagDelCellEvent",
-     --LOGIN_EVENT = "loginEvent",
-     MAIN_COINS_REFRESH_EVENT = "mainCoinsRefreshEvent",
-     --BAG_BACK_EVENT = "bagBackEvent",
-     --PROP_USE_EVENT = "propUseEvent",
-     --PROP_SELL_EVENT = "propSellEvent",
-     --PROP_BACK_EVENT = "propBackEvent",
-     --ITEM_CLICK_EVENT = "itemClickEvent"
+     MAIN_COINS_REFRESH_EVENT = "mainCoinsRefreshEvent"
 }
 
 UIConst.UI_NODE = {

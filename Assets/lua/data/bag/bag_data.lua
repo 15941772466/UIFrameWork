@@ -17,7 +17,7 @@ function BagData:init(dataMap)
     self.bagOreDataList = {}
     self.bagOreDataMap = {}
 
-    for i, v in pairs(dataMap) do
+    for i, v in pairs (dataMap) do
         local item = require("data/bag/item_entity"):create(i, v)
         self:differDataByType(i, item)
     end

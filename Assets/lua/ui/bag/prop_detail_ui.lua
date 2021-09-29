@@ -1,5 +1,4 @@
 local BagManager = require "module/bag/bag_manager"
-
 local PropDetailUI = class("PropDetailUI", BaseUI)
 
 function PropDetailUI:ctor()

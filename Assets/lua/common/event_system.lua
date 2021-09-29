@@ -54,18 +54,18 @@ function EventSystem:sendEvent(eventType, ...)
 end
 
 --添加观察者
-function EventSystem:addObserver(event,observer)
+function EventSystem:addObserver(event, observer)
     if EventSystem[event]==nil then
         EventSystem[event] = {}
     end
-    table.insert(EventSystem[event],observer)
+    table.insert(EventSystem[event], observer)
 end
 
 --删除观察者
 function EventSystem:removeObserver(event,observer)
     local item = EventSystem[event]
     if item~=nil then
-        for k,v in pairs(item) do
+        for k,v in pairs (item) do
             if v==observer then
                 table.remove(item,k)
                 break
@@ -78,7 +78,7 @@ end
 function EventSystem:observerPostEvent(event,...)
     local item = EventSystem[event]
     if item~=nil then
-        for _,v in pairs(item) do
+        for _,v in pairs (item) do
             v(...)
         end
     end

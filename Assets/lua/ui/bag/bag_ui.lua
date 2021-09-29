@@ -1,5 +1,5 @@
-local BagUI = class("BagUI", BaseUI)
 local BagConst = require "data/bag/bag_const"
+local BagUI = class("BagUI", BaseUI)
 
 local MIN_CELL_COUNT = 20
 local ROW_ITEM_MAX_COUNT = 4
@@ -195,10 +195,10 @@ function BagUI:oreBtnOnClick()
 end
 
 function BagUI:clearItems()
-    for i,v in ipairs(self.itemCellList) do
+    for i,v in ipairs (self.itemCellList) do
         v:delete()
     end
-    for i,v in ipairs(self.emptyCellUIList) do
+    for i,v in ipairs (self.emptyCellUIList) do
         v:delete()
     end
     self.allCellsList = {}
