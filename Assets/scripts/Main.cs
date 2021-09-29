@@ -96,7 +96,7 @@ namespace DH
             }
 
             // editor下模拟异步加载情况
-            int frame = random.Next(1, 5);
+            int frame = random.Next(0, 1);
             AddDelay(frame, () =>
             {
                 complete?.Invoke(asset);

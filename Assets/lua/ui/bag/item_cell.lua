@@ -1,11 +1,11 @@
-local BagManager = require "module/bag/bag_manager"
 local BagConst = require "data/bag/bag_const"
 local ItemCell = class("ItemCell")
 
 local BACK_BG = "Assets/res/common/box1.png"
 
-function ItemCell:ctor(itemID)
+function ItemCell:ctor(itemID, bag_ui)
     self.itemID = itemID
+    self.parent = bag_ui
 end
 
 function ItemCell:getNode()
@@ -21,13 +21,13 @@ function ItemCell:getCellSpritePath()
     if not self.itemID then
         return BACK_BG
     end
-    local item = BagManager:getItem(self.itemID)
+    local item = DataManager.bagData.bagItemDataMap[self.itemID]
     local spritePath = BagConst.QUALITY[item:getQuality()]
     return "Assets/res/common/"..spritePath
 end
 
 function ItemCell:getPropSpritePath()
-    local item = BagManager:getItem(self.itemID)
+    local item = DataManager.bagData.bagItemDataMap[self.itemID]
     return item:getIcon()
 end
 
@@ -50,9 +50,8 @@ function ItemCell:startLoad(index)
             end
         end
         self.gameObject.transform:SetParent(UIManager.bagNode.transform, false)
-        self.uiTransform = gameObject.transform
-        BagManager.cellTransformMap[index-1] = gameObject.transform
-        self:setUIOrder(index-1)
+        self.cellTransform = gameObject.transform
+        self:setUIOrder(self)
         UIManager:loadSprite(spritePath, function(sprite)
             --加载cellSprite过程中 被关闭
             if self.deleted then
@@ -67,10 +66,12 @@ end
 
 function ItemCell:onLoadComplete()
     --根据类型添加底板
-    self.cellImage = self.uiTransform:GetComponent(typeof(CS.UnityEngine.UI.Image))
+    self.cellImage = self.cellTransform:GetComponent(typeof(CS.UnityEngine.UI.Image))
+    self.cellImage.color = {r = 255, g = 255, b = 255, a = 255}
+
     self.cellImage.sprite = self.cellSprite
-    self.prop = self.uiTransform:Find("prop")
-    --说明该道具被摧毁
+    self.prop = self.cellTransform:Find("prop")
+    --道具被摧毁
     if not self.prop then
         return
     end
@@ -88,8 +89,9 @@ function ItemCell:onLoadComplete()
         self.propSprite = sprite
         --添加图标
         self.propImage = self.prop:GetComponent(typeof(CS.UnityEngine.UI.Image))
+        self.propImage.color = {r = 255, g = 255, b = 255, a = 255}
         self.propImage.sprite = self.propSprite
-        self.number = self.uiTransform:Find("prop/number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
+        self.number = self.cellTransform:Find("prop/number"):GetComponent(typeof(CS.UnityEngine.UI.Text))
         self.number.text = DataManager.bagData:getItemNum(self.itemID)
         self.selfBtn = self.prop:GetComponent(typeof(CS.UnityEngine.UI.Button))
         self.selfBtn.onClick:AddListener(function() self:selfBtnOnClick() end)
@@ -97,17 +99,20 @@ function ItemCell:onLoadComplete()
     end)
 end
 
-function ItemCell:setUIOrder(index)
-    for i, v in pairs (BagManager.cellTransformMap) do
-        if i >= index then
-            v:SetSiblingIndex(i)
-            for  i2, v2 in pairs (BagManager.cellTransformMap) do
-                if i < i2 then
-                    v2:SetSiblingIndex(i2)
-                end
-            end
-        end
+function ItemCell:setUIOrder(cellObj)
+    local pos
+    if #self.parent.allCellsList == 0 then
+        pos = 1
     end
+    for i, v in ipairs (self.parent.allCellsList) do
+        if cellObj.index < v.index then
+            cellObj.cellTransform:SetSiblingIndex(i-1)
+            pos = i
+            break
+        end
+        pos = #self.parent.allCellsList
+    end
+    table.insert(self.parent.allCellsList, pos, cellObj)
 end
 
 function ItemCell:onRefresh()
@@ -121,6 +126,7 @@ function ItemCell:delete()
 end
 
 function ItemCell:selfBtnOnClick()
+    self.parent.curCellID = self.itemID
     UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, self.itemID)
 end
 

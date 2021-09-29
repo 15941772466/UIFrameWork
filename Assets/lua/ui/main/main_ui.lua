@@ -1,7 +1,5 @@
 local MainUI = class("BagUI", BaseUI)
 
-local BagManager = require("module/bag/bag_manager")
-
 function MainUI:getNode()
     return UIConst.UI_NODE.NORMAL
 end
@@ -19,8 +17,7 @@ function MainUI:onLoadComplete()
 end
 
 function MainUI:onRefresh()
-    local coins = DataManager.data.coinsNum
-    self.coins.text = "金币： "..coins
+    self:onCoinsRefresh()
 end
 
 function MainUI:onCover()
@@ -32,6 +29,12 @@ function MainUI:onReShow()
 end
 
 function MainUI:onInitEvent()
+    EventSystem:addListener(UIConst.EVENT_TYPE.MAIN_COINS_REFRESH_EVENT, function() self:onCoinsRefresh() end)
+end
+
+function MainUI:onCoinsRefresh()
+    local coins = DataManager.data.coinsNum
+    self.coins.text = "金币： "..coins
 end
 
 function MainUI:mainBackBtnOnClick()
@@ -39,7 +42,7 @@ function MainUI:mainBackBtnOnClick()
 end
 
 function MainUI:bagBtnOnClick()
-    UIManager:openUI(UIConst.UI_TYPE.BAG_UI)
+    UIManager:openUI(UIConst.UI_TYPE.BAG_UI, nil,4)
 end
 
 function MainUI:onClose()

@@ -4,7 +4,7 @@ function BaseUI:ctor() end
 
 function BaseUI:getResPath() end
 
-function BaseUI:onLoadComplete() end
+function BaseUI:onLoadComplete(...) end
 
 function BaseUI:onRefresh(...) end
 
@@ -56,10 +56,11 @@ function BaseUI:removeAllEvents()
     end
 end
 
-function BaseUI:startLoad(index, itemID)
+function BaseUI:startLoad(index, itemID, type)
     local path = self:getResPath()
     UIManager:loadGameObject(path, function(gameObject)
         self.itemID = itemID
+        self.type = type
         self.eventMap = {}
         self.eventTypeList = {}
         self.gameObject = gameObject
@@ -77,20 +78,20 @@ function BaseUI:startLoad(index, itemID)
         self.uiTransform = gameObject.transform
         self:setUIOrder(index)
         self:topUIOnCover()
-        self:onLoadComplete()
+        self:onLoadComplete(self.type)
         if self.closed then
             self:closeUI()
             return
         end
         self:onInitEvent()
-        self:onRefresh(self.itemID)
+        self:onRefresh(self.itemID, self.type)
         if self.covered then
             self:onCover()
         end
     end)
 end
 
-function BaseUI:show(index, itemID)
+function BaseUI:show(index, itemID, type)
     if self:getNode() == UIConst.UI_NODE.POPUP then
         UIManager.mask.gameObject:SetActive(true)
         UIManager.uiTransformMap[index] = UIManager.mask
@@ -98,6 +99,7 @@ function BaseUI:show(index, itemID)
         index = index + 1
     end
     self.itemID = itemID
+    self.type = type
     UIManager.uiTransformMap[self.index] = nil
     self.index = index
     UIManager.uiTransformMap[index] = self.uiTransform
@@ -105,7 +107,7 @@ function BaseUI:show(index, itemID)
     if not self.gameObject.activeSelf then
         self.uiTransform.gameObject:SetActive(true)
         self:onInitEvent()
-        self:onRefresh(self.itemID)
+        self:onRefresh(self.itemID, self.type)
     end
     self:topUIOnCover()
 end

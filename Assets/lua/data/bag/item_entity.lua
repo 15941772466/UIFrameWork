@@ -34,4 +34,7 @@ function ItemEntity:getIcon()
     return "Assets/res/item/"..items.data[self.id]["icon"]
 end
 
+function ItemEntity:getType()
+    return items.data[self.id]["type"]
+end
 return ItemEntity

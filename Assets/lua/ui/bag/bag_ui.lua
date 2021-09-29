@@ -1,10 +1,11 @@
-local BagManager = require "module/bag/bag_manager"
 local BagUI = class("BagUI", BaseUI)
+local BagConst = require "data/bag/bag_const"
 
 local MIN_CELL_COUNT = 20
 local ROW_ITEM_MAX_COUNT = 4
 local CELL_HEIGHT = 105
 local CELL_GAP = 30
+local MIN_EMPTY_CELL_INDEX = 5000
 
 function BagUI:getNode()
     return UIConst.UI_NODE.POPUP
@@ -14,30 +15,41 @@ function BagUI:getResPath()
     return "Assets/res/prefabs/bag_ui.prefab"
 end
 
-function BagUI:onLoadComplete()
-    BagManager:init()
+function BagUI:onLoadComplete(type)
     --测试：添加背包道具按钮
     self.propOneBtn = self.uiTransform:Find("prop_one"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.propOneBtn.onClick:AddListener(function() self:propOneBtnOnClick() end)
     self.propTwoBtn = self.uiTransform:Find("prop_two"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.propTwoBtn.onClick:AddListener(function() self:propTwoBtnOnClick() end)
-    self.propThreeBtn = self.uiTransform:Find("prop_three"):GetComponent(typeof(CS.UnityEngine.UI.Button))
-    self.propThreeBtn.onClick:AddListener(function() self:propThreeBtnOnClick() end)
+
+    self.allCellsList = {}
+    self.itemCellList = {}
+    self.emptyCellUIList = {}
+    self.emptyIndex = MIN_EMPTY_CELL_INDEX
+    self.type = type
+    self.equipmentBtn = self.uiTransform:Find("equipment_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.equipmentBtn.onClick:AddListener(function() self:equipmentBtnOnClick() end)
+    self.inscriptionBtn = self.uiTransform:Find("inscription_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.inscriptionBtn.onClick:AddListener(function() self:inscriptionBtnOnClick() end)
+    self.boxBtn = self.uiTransform:Find("box_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.boxBtn.onClick:AddListener(function() self:boxBtnOnClick() end)
+    self.oreBtn = self.uiTransform:Find("ore_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
+    self.oreBtn.onClick:AddListener(function() self:oreBtnOnClick() end)
 
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn.onClick:AddListener(function() self:backBtnOnClick() end)
     self.content = self.uiTransform:Find("bag/content"):GetComponent(typeof(CS.UnityEngine.RectTransform))
-    self.emptyCellUIList = {}
-    self.emptyIndex = 5000
-    for _, v in ipairs (DataManager.bagData.bagItemDataList) do
-        local ItemCell = require("ui/bag/item_cell"):create(v.id)
-        table.insert(BagManager.ItemCellList, ItemCell)
-        ItemCell:startLoad(v.id)
-    end
+    self:bagTypeList()
 end
 
-function BagUI:onRefresh()
-    for i, v in ipairs (BagManager.ItemCellList) do
+function BagUI:onRefresh(itemID, type)
+    if self.type ~= type then
+        self.type = type
+        self:clearItems()
+        self:bagTypeList()
+    end
+
+    for i, v in ipairs (self.itemCellList) do
         v:onRefresh()
     end
     self.bagItemListCount = #DataManager.bagData.bagItemDataList
@@ -58,7 +70,6 @@ function BagUI:onRefresh()
         end
     else
         local needCellCount = ROW_ITEM_MAX_COUNT - self.nowItemListCount % ROW_ITEM_MAX_COUNT
-
         --需要补一整行时
         if needCellCount == ROW_ITEM_MAX_COUNT then
             --数据不变、再次刷新时跳过补全
@@ -81,7 +92,7 @@ end
 
 function BagUI:addEmptyCell()
     self.emptyIndex = self.emptyIndex + 1
-    local emptyCellUI = require("ui/bag/item_cell"):create()
+    local emptyCellUI = require("ui/bag/item_cell"):create(nil, self)
     table.insert(self.emptyCellUIList, emptyCellUI)
     emptyCellUI:startLoad(self.emptyIndex)
 end
@@ -89,13 +100,57 @@ end
 function BagUI:delEmptyCell(i)
     --删除多余空白cell（已加载完毕 or 正在加载中）
     if self.emptyCellUIList[i].index then
-        CS.UnityEngine.GameObject.Destroy(BagManager.cellTransformMap[self.emptyCellUIList[i].index - 1].gameObject)
-        BagManager.cellTransformMap[self.emptyCellUIList[i].index - 1] = nil
     else
         self.emptyCellUIList[i].deleted = true
     end
-
     table.remove(self.emptyCellUIList, i)
+    for i, v in ipairs (self.allCellsList) do
+        if v == self.emptyCellUIList[i] then
+            CS.UnityEngine.GameObject.Destroy(v.gameObject)
+            table.remove(self.allCellsList, i)
+        end
+    end
+end
+
+function BagUI:delCellTransform(id)
+    DataManager.bagData:removeItem(id)
+    for i, v in ipairs (DataManager.bagData.bagItemDataList) do
+        if v.id == id then
+            table.remove(DataManager.bagData.bagItemDataList,i)
+        end
+    end
+    for i, v in ipairs (self.itemCellList) do
+        if v.itemID == id then
+            table.remove(self.itemCellList, i)
+        end
+    end
+    for i, v in ipairs (self.allCellsList) do
+        if v.itemID == id then
+            CS.UnityEngine.GameObject.Destroy(v.gameObject)
+            table.remove(self.allCellsList, i)
+        end
+    end
+end
+
+function BagUI:bagTypeList()
+    if self.type == BagConst.TYPE.EQUIPMENT then
+        DataManager.bagData.bagItemDataList = DataManager.bagData.bagEquipmentDataList
+        DataManager.bagData.bagItemDataMap = DataManager.bagData.bagEquipmentDataMap
+    elseif self.type == BagConst.TYPE.INSCRIPTION then
+        DataManager.bagData.bagItemDataList = DataManager.bagData.bagInscriptionDataList
+        DataManager.bagData.bagItemDataMap = DataManager.bagData.bagInscriptionDataMap
+    elseif self.type == BagConst.TYPE.BOX then
+        DataManager.bagData.bagItemDataList = DataManager.bagData.bagBoxDataList
+        DataManager.bagData.bagItemDataMap = DataManager.bagData.bagBoxDataMap
+    elseif self.type == BagConst.TYPE.ORE then
+        DataManager.bagData.bagItemDataList = DataManager.bagData.bagOreDataList
+        DataManager.bagData.bagItemDataMap = DataManager.bagData.bagOreDataMap
+    end
+    for _, v in ipairs (DataManager.bagData.bagItemDataList) do
+        local ItemCell = require("ui/bag/item_cell"):create(v.id, self)
+        table.insert(self.itemCellList, ItemCell)
+        ItemCell:startLoad(v.id)
+    end
 end
 
 function BagUI:refreshContentSize()
@@ -107,13 +162,14 @@ function BagUI:onCover()
 end
 
 function BagUI:onReShow()
-    for _, v in ipairs (BagManager.ItemCellList) do
+    for _, v in ipairs (self.itemCellList) do
         v:onRefresh()
     end
-    self:onRefresh()
+    self:onRefresh(nil, self.type)
 end
 
 function BagUI:onInitEvent()
+    EventSystem:addListener(UIConst.EVENT_TYPE.BAG_DEL_CELL_EVENT, function() self:delCellTransform(self.curCellID) end)
 end
 
 function BagUI:backBtnOnClick()
@@ -130,8 +186,8 @@ function BagUI:propOneBtnOnClick()
         local item = require("data/bag/item_entity"):create(50, 1)
         table.insert(DataManager.bagData.bagItemDataList, item)
         DataManager.bagData.bagItemDataMap[50] = item
-        local ItemCell = require("ui/bag/item_cell"):create(50)
-        table.insert(BagManager.ItemCellList, ItemCell)
+        local ItemCell = require("ui/bag/item_cell"):create(50, self)
+        table.insert(self.itemCellList, ItemCell)
         ItemCell:startLoad(50)
     end
     self:onRefresh()
@@ -147,15 +203,39 @@ function BagUI:propTwoBtnOnClick()
         local item = require("data/bag/item_entity"):create(26, 1)
         table.insert(DataManager.bagData.bagItemDataList, item)
         DataManager.bagData.bagItemDataMap[26] = item
-        local ItemCell = require("ui/bag/item_cell"):create(26)
-        table.insert(BagManager.ItemCellList, ItemCell)
+        local ItemCell = require("ui/bag/item_cell"):create(26, self)
+        table.insert(self.itemCellList, ItemCell)
         ItemCell:startLoad(26)
     end
     self:onRefresh()
 end
 
-function BagUI:propThreeBtnOnClick()
+function BagUI:equipmentBtnOnClick()
+    self:onRefresh(nil, 1)
+end
 
+function BagUI:inscriptionBtnOnClick()
+    self:onRefresh(nil, 2)
+end
+
+function BagUI:boxBtnOnClick()
+    self:onRefresh(nil, 3)
+end
+
+function BagUI:oreBtnOnClick()
+    self:onRefresh(nil, 4)
+end
+
+function BagUI:clearItems()
+    for i,v in ipairs(self.itemCellList) do
+        v:delete()
+    end
+    for i,v in ipairs(self.emptyCellUIList) do
+        v:delete()
+    end
+    self.allCellsList = {}
+    self.itemCellList = {}
+    self.emptyCellUIList = {}
 end
 
 function BagUI:onClose()

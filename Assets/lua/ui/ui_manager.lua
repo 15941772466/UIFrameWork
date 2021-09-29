@@ -36,16 +36,12 @@ function UIManager:init()
         self.mask = self.uiRoot.transform:Find(UIConst.UI_NODE.MASK)
         self.mask.gameObject:SetActive(false)
         self:openUI(UIConst.UI_TYPE.LOGIN_UI)
-        --self:openUI(UIConst.UI_TYPE.MAIN_UI)
-        --self:openUI(UIConst.UI_TYPE.BAG_UI)
-        --self:closeUIByType(UIConst.UI_TYPE.LOGIN_UI)
     end)
 end
 
-function UIManager:openUI(uiType, itemID)
+function UIManager:openUI(uiType, itemID, type)
     local uiObj
     index = index + 1
-
     uiObj = self:checkOpen(uiType)
     if uiObj then
         uiObj.index = index
@@ -56,14 +52,14 @@ function UIManager:openUI(uiType, itemID)
     if uiObj then
         uiObj.index = index
         table.insert(self.uiList, uiObj)
-        uiObj:show(index, itemID)
+        uiObj:show(index, itemID, type)
         return
     end
     uiObj = require(uiType):create()
     uiObj.index = index
     uiObj.uiType = uiType
     table.insert(self.uiList, uiObj)
-    uiObj:startLoad(index, itemID)
+    uiObj:startLoad(index, itemID, type)
 end
 
 function UIManager:getFromCacheList(uiType)

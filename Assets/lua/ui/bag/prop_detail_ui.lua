@@ -1,6 +1,6 @@
-local PropDetailUI = class("PropDetailUI", BaseUI)
-
 local BagManager = require "module/bag/bag_manager"
+
+local PropDetailUI = class("PropDetailUI", BaseUI)
 
 function PropDetailUI:ctor()
 end
@@ -28,7 +28,7 @@ end
 
 function PropDetailUI:onRefresh(itemID)
     self.itemID = itemID
-    local item = BagManager:getItem(self.itemID)
+    local item = DataManager.bagData.bagItemDataMap[self.itemID]
     if item:getNum() == 0 then
         self:closeUI()
     end

@@ -6,4 +6,11 @@ BagConst.QUALITY = {
     [3] = "box3.png"
 }
 
+BagConst.TYPE = {
+    EQUIPMENT = 1,
+    INSCRIPTION = 2,
+    BOX = 3,
+    ORE = 4
+}
+
 return BagConst

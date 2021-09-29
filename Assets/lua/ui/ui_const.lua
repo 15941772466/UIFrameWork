@@ -7,16 +7,16 @@ UIConst.UI_TYPE = {
      PROP_DETAIL_UI = "ui/bag/prop_detail_ui",
 }
 
---UIConst.EVENT_TYPE = {
---     LOGIN_EVENT = "loginEvent",
---     MAIN_BACK_EVENT = "mainBackEvent",
---     BAG_EVENT = "bagEvent",
---     BAG_BACK_EVENT = "bagBackEvent",
---     PROP_USE_EVENT = "propUseEvent",
---     PROP_SELL_EVENT = "propSellEvent",
---     PROP_BACK_EVENT = "propBackEvent",
---     ITEM_CLICK_EVENT = "itemClickEvent"
---}
+UIConst.EVENT_TYPE = {
+     BAG_DEL_CELL_EVENT = "bagDelCellEvent",
+     --LOGIN_EVENT = "loginEvent",
+     MAIN_COINS_REFRESH_EVENT = "mainCoinsRefreshEvent",
+     --BAG_BACK_EVENT = "bagBackEvent",
+     --PROP_USE_EVENT = "propUseEvent",
+     --PROP_SELL_EVENT = "propSellEvent",
+     --PROP_BACK_EVENT = "propBackEvent",
+     --ITEM_CLICK_EVENT = "itemClickEvent"
+}
 
 UIConst.UI_NODE = {
      NORMAL = "normal",
