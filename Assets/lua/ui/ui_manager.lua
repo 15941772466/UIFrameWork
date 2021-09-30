@@ -39,7 +39,7 @@ function UIManager:init()
     end)
 end
 
-function UIManager:openUI(uiType, itemID, type)
+function UIManager:openUI(uiType, params)
     local uiObj
     self.index = self.index + 1
     uiObj = self:checkOpen(uiType)
@@ -52,14 +52,14 @@ function UIManager:openUI(uiType, itemID, type)
     if uiObj then
         uiObj.index = self.index
         table.insert(self.uiList, uiObj)
-        uiObj:show(self.index, itemID, type)
+        uiObj:show(self.index, params)
         return
     end
     uiObj = require(uiType):create()
     uiObj.index = self.index
     uiObj.uiType = uiType
     table.insert(self.uiList, uiObj)
-    uiObj:startLoad(self.index, itemID, type)
+    uiObj:startLoad(self.index, params)
 end
 
 function UIManager:getFromCacheList(uiType)

@@ -14,19 +14,15 @@ function LoginUI:onLoadComplete()
 end
 
 function LoginUI:onRefresh()
-
 end
 
 function LoginUI:onCover()
-
 end
 
 function LoginUI:onReShow()
-
 end
 
 function LoginUI:onInitEvent()
-
 end
 
 function LoginUI:loginBtnOnClick()

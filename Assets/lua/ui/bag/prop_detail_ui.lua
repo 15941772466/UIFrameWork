@@ -25,8 +25,8 @@ function PropDetailUI:onLoadComplete()
     self.propBackBtn.onClick:AddListener(function() self:propBackOnClick() end)
 end
 
-function PropDetailUI:onRefresh(itemID)
-    self.itemID = itemID
+function PropDetailUI:onRefresh(params)
+    self.itemID = params.itemID
     local item = DataManager.bagData.bagItemDataMap[self.itemID]
     if item:getNum() == 0 then
         self:closeUI()
@@ -46,12 +46,18 @@ end
 
 function PropDetailUI:useBtnOnClick()
     BagManager:useProp(self.itemID)
-    self:onRefresh(self.itemID)
+    local params = {
+        itemID = self.itemID
+    }
+    self:onRefresh(params)
 end
 
 function PropDetailUI:sellBtnOnClick()
     BagManager:sellProp(self.itemID)
-    self:onRefresh(self.itemID)
+    local params = {
+        itemID = self.itemID
+    }
+    self:onRefresh(params)
 end
 
 function PropDetailUI:propBackOnClick()

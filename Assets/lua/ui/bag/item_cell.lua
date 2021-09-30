@@ -127,7 +127,10 @@ end
 
 function ItemCell:selfBtnOnClick()
     self.parent.curCellID = self.itemID
-    UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, self.itemID)
+    local params = {
+        itemID = self.itemID
+    }
+    UIManager:openUI(UIConst.UI_TYPE.PROP_DETAIL_UI, params)
 end
 
 return ItemCell

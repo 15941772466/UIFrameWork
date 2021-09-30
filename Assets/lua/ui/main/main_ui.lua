@@ -21,7 +21,6 @@ function MainUI:onRefresh()
 end
 
 function MainUI:onCover()
-
 end
 
 function MainUI:onReShow()
@@ -42,7 +41,11 @@ function MainUI:mainBackBtnOnClick()
 end
 
 function MainUI:bagBtnOnClick()
-    UIManager:openUI(UIConst.UI_TYPE.BAG_UI, nil,4)
+    local BagConst = require "data/bag/bag_const"
+    local params = {
+        type = BagConst.TYPE.EQUIPMENT
+    }
+    UIManager:openUI(UIConst.UI_TYPE.BAG_UI, params)
 end
 
 function MainUI:onClose()

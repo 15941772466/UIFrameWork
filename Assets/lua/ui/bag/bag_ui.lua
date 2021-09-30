@@ -15,12 +15,11 @@ function BagUI:getResPath()
     return "Assets/res/prefabs/bag_ui.prefab"
 end
 
-function BagUI:onLoadComplete(type)
+function BagUI:onLoadComplete()
     self.allCellsList = {}
     self.itemCellList = {}
     self.emptyCellUIList = {}
     self.emptyIndex = MIN_EMPTY_CELL_INDEX
-    self.type = type
     self.equipmentBtn = self.uiTransform:Find("equipment_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.equipmentBtn.onClick:AddListener(function() self:equipmentBtnOnClick() end)
     self.inscriptionBtn = self.uiTransform:Find("inscription_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
@@ -36,9 +35,9 @@ function BagUI:onLoadComplete(type)
     self:bagTypeList()
 end
 
-function BagUI:onRefresh(itemID, type)
-    if self.type ~= type then
-        self.type = type
+function BagUI:onRefresh(params)
+    if self.type ~= params.type then
+        self.type = params.type
         self:clearItems()
         self:bagTypeList()
     end
@@ -167,7 +166,10 @@ function BagUI:onReShow()
     for _, v in ipairs (self.itemCellList) do
         v:onRefresh()
     end
-    self:onRefresh(nil, self.type)
+    local params = {
+        type = self.type
+    }
+    self:onRefresh(params)
 end
 
 function BagUI:onInitEvent()
@@ -179,19 +181,31 @@ function BagUI:backBtnOnClick()
 end
 
 function BagUI:equipmentBtnOnClick()
-    self:onRefresh(nil, 1)
+    local params = {
+        type = BagConst.TYPE.EQUIPMENT
+    }
+    self:onRefresh(params)
 end
 
 function BagUI:inscriptionBtnOnClick()
-    self:onRefresh(nil, 2)
+    local params = {
+        type = BagConst.TYPE.INSCRIPTION
+    }
+    self:onRefresh(params)
 end
 
 function BagUI:boxBtnOnClick()
-    self:onRefresh(nil, 3)
+    local params = {
+        type = BagConst.TYPE.BOX
+    }
+    self:onRefresh(params)
 end
 
 function BagUI:oreBtnOnClick()
-    self:onRefresh(nil, 4)
+    local params = {
+        type = BagConst.TYPE.ORE
+    }
+    self:onRefresh(params)
 end
 
 function BagUI:clearItems()

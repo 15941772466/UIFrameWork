@@ -56,13 +56,16 @@ function BaseUI:removeAllEvents()
     end
 end
 
-function BaseUI:startLoad(index, itemID, type)
+function BaseUI:startLoad(index, params)
     local path = self:getResPath()
+    if params then
+        self.itemID = params.itemID
+        self.type = params.type
+    end
+
+    self.eventMap = {}
+    self.eventTypeList = {}
     UIManager:loadGameObject(path, function(gameObject)
-        self.itemID = itemID
-        self.type = type
-        self.eventMap = {}
-        self.eventTypeList = {}
         self.gameObject = gameObject
         self.uiNode = self:getNode()
         self.gameObject.transform:SetParent(UIManager.normal.transform, false)
@@ -78,28 +81,30 @@ function BaseUI:startLoad(index, itemID, type)
         self.uiTransform = gameObject.transform
         self:setUIOrder(index)
         self:topUIOnCover()
-        self:onLoadComplete(self.type)
+        self:onLoadComplete()
         if self.closed then
             self:closeUI()
             return
         end
         self:onInitEvent()
-        self:onRefresh(self.itemID, self.type)
+        self:onRefresh(params)
         if self.covered then
             self:onCover()
         end
     end)
 end
 
-function BaseUI:show(index, itemID, type)
+function BaseUI:show(index, params)
     if self:getNode() == UIConst.UI_NODE.POPUP then
         UIManager.mask.gameObject:SetActive(true)
         UIManager.uiTransformMap[index] = UIManager.mask
         self:setUIOrder(index)
         index = index + 1
     end
-    self.itemID = itemID
-    self.type = type
+    if params then
+        self.itemID = params.itemID
+        self.type = params.type
+    end
     UIManager.uiTransformMap[self.index] = nil
     self.index = index
     UIManager.uiTransformMap[index] = self.uiTransform
@@ -107,7 +112,7 @@ function BaseUI:show(index, itemID, type)
     if not self.gameObject.activeSelf then
         self.uiTransform.gameObject:SetActive(true)
         self:onInitEvent()
-        self:onRefresh(self.itemID, self.type)
+        self:onRefresh(params)
     end
     self:topUIOnCover()
 end

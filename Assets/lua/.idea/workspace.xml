@@ -3,11 +3,12 @@
   <component name="ChangeListManager">
     <list default="true" id="a5fd45e6-d3c0-4d2b-973a-f83e9570921c" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/common/event_system.lua" beforeDir="false" afterPath="$PROJECT_DIR$/common/event_system.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/data/bag/bag_data.lua" beforeDir="false" afterPath="$PROJECT_DIR$/data/bag/bag_data.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/bag_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/bag_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/bag/item_cell.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/item_cell.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/bag/prop_detail_ui.lua" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ui/ui_const.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_const.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/base_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/base_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/login/login_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/login/login_ui.lua" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ui/main/main_ui.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/main/main_ui.lua" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/ui/ui_manager.lua" beforeDir="false" afterPath="$PROJECT_DIR$/ui/ui_manager.lua" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -91,6 +92,7 @@
       <workItem from="1632733803926" duration="3682000" />
       <workItem from="1632792706631" duration="24296000" />
       <workItem from="1632879487152" duration="10665000" />
+      <workItem from="1632965502294" duration="1839000" />
     </task>
     <servers />
   </component>
