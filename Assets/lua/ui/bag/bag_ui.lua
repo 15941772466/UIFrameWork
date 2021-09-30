@@ -32,14 +32,14 @@ function BagUI:onLoadComplete()
     self.backBtn = self.uiTransform:Find("back_btn"):GetComponent(typeof(CS.UnityEngine.UI.Button))
     self.backBtn.onClick:AddListener(function() self:backBtnOnClick() end)
     self.content = self.uiTransform:Find("bag/content"):GetComponent(typeof(CS.UnityEngine.RectTransform))
-    self:bagTypeList()
+    self:changeBagDataByType()
 end
 
 function BagUI:onRefresh(params)
     if self.type ~= params.type then
         self.type = params.type
         self:clearItems()
-        self:bagTypeList()
+        self:changeBagDataByType()
     end
 
     for i, v in ipairs (self.itemCellList) do
@@ -53,7 +53,7 @@ function BagUI:onRefresh(params)
                 self:addEmptyCell()
             end
         elseif self.nowItemListCount > MIN_CELL_COUNT then
-            for i = #self.emptyCellUIList, 1 ,-1 do
+            for i = #self.emptyCellUIList, 1, -1 do
                 self:delEmptyCell(1)
                 if #self.emptyCellUIList + self.bagItemListCount - MIN_CELL_COUNT == 0 then
                     self:refreshContentSize()
@@ -110,7 +110,6 @@ function BagUI:delEmptyCell(pos)
         self.emptyCellUIList[pos].deleted = true
     end
     table.remove(self.emptyCellUIList, pos)
-
 end
 
 function BagUI:delCellTransform(id)
@@ -133,7 +132,7 @@ function BagUI:delCellTransform(id)
     end
 end
 
-function BagUI:bagTypeList()
+function BagUI:changeBagDataByType()
     if self.type == BagConst.TYPE.EQUIPMENT then
         DataManager.bagData.bagItemDataList = DataManager.bagData.bagEquipmentDataList
         DataManager.bagData.bagItemDataMap = DataManager.bagData.bagEquipmentDataMap
